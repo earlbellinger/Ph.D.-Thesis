@@ -1,0 +1,576 @@
+\documentclass[goeng, submitted]{thesis}
+%\documentclass[goeng, print]{thesis}
+
+\title{Inverse Problems in Asteroseismology}
+\author{Earl Patrick Bellinger}
+\town{Albany, New York, USA}
+
+\thesisadvisorycommitteea{\textbf{Dr.~ir.~Saskia Hekker}}
+\instthesisadvisorycommitteea{\emph{Max-Planck-Institut f\"ur Sonnensystemforschung, G\"ottingen, Germany\\
+Stellar Astrophysics Centre, Aarhus University, Denmark}}
+\thesisadvisorycommitteeb{\textbf{Prof.~Dr.~Sarbani Basu}}
+\instthesisadvisorycommitteeb{\emph{Department of Astronomy, Yale University, New Haven, CT, USA}}
+\thesisadvisorycommitteec{\textbf{Prof.~Dr.~Laurent Gizon}}
+\instthesisadvisorycommitteec{\emph{Max-Planck-Institut f\"ur Sonnensystemforschung, G\"ottingen, Germany\\
+Institut f\"ur Astrophysik, Georg-August-Universit\"at G\"ottingen, Germany}}
+\thesisadvisorycommitteed{\textbf{Prof.~Dr.~Ramin Yahyapour}}
+\instthesisadvisorycommitteed{\emph{Institut f\"ur Informatik, Georg-August-Universit\"at G\"ottingen, Germany\\
+Gesellschaft f\"ur wissenschaftliche Datenverarbeitung mbH G\"ottingen, Germany}}
+
+
+\refereea{\textbf{Prof.~Dr.~Ramin Yahyapour}}
+%\instrefereea{}
+\instrefereea{\emph{Institut f\"ur Informatik, Georg-August-Universit\"at G\"ottingen, Germany\\
+Gesellschaft f\"ur wissenschaftliche Datenverarbeitung mbH G\"ottingen, Germany}}
+\refereeb{\textbf{Prof.~Dr.~Laurent Gizon}}
+%\instrefereeb{}
+\instrefereeb{\emph{Max-Planck-Institut f\"ur Sonnensystemforschung, G\"ottingen, Germany\\
+Institut f\"ur Astrophysik, Georg-August-Universit\"at G\"ottingen, Germany}}
+
+
+
+\commissiona{\textbf{Prof.~Dr.~Carsten Damm}}
+\instcommissiona{\emph{Institut f\"ur Informatik, Georg-August-Universit\"at G\"ottingen, Germany}}
+
+\commissionb{\textbf{Jun.~Prof.~Dr.~Ing.~Marcus Baum}}
+\instcommissionb{\emph{Institut f\"ur Informatik, Georg-August-Universit\"at G\"ottingen, Germany \\
+Fakult\"at f\"ur Informatik und Mathematik, Universit\"at Passau, Germany}}
+
+\commissionc{\textbf{Prof.~Dr.~Sarbani Basu}}
+%\instcommissionc{}
+\instcommissionc{\emph{Department of Astronomy, Yale University, New Haven, CT, USA}}
+
+\commissiond{\textbf{Dr.~ir.~Saskia Hekker}}
+%\instcommissiond{}
+\instcommissiond{\emph{Max-Planck-Institut f\"ur Sonnensystemforschung, G\"ottingen, Germany\\
+Stellar Astrophysics Centre, Aarhus University, Denmark}}
+
+%\commissionc{\textbf{Prof.~Dr.~Laurent Gizon}}
+%\instcommissionc{}{\emph{Max-Planck-Institut f\"ur Sonnensystemforschung}}%Only appears with option "additionalreferee"
+
+\submittedyear{2018}
+\publicationyear{2018}
+\submitteddate{April~5, 2018}
+\examinationdate{May~16, 2018}
+\isbn{}
+
+\newcommand{\comment}[1]{}
+\usepackage[german,english]{babel}
+
+\usepackage[sectionbib]{chapterbib}
+\usepackage{natbib}
+
+\usepackage{etoolbox}
+\usepackage{calc}
+\setlength{\bibhang}{3.3em}
+
+\iffalse
+\newcounter{bibcount}
+\makeatletter
+%\setlength{\bibhang}{3\parindent}
+\patchcmd{\@lbibitem}
+    {\item[}
+    {\item[\hfil\stepcounter{bibcount}{\thebibcount.}}
+    {}{}
+\setlength{\bibhang}{3.3em}
+%\setlength{\leftmargin}{2\parindent}
+%\setlength{\itemindent}{-\parindent}
+\renewcommand\NAT@bibsetup%
+   [1]{\setlength{\leftmargin}{\bibhang}%\setlength{\itemindent}{-\parindent}%
+       %\setlength{\itemsep}{\bibsep}\setlength{\parsep}{\z@}}
+       }
+\makeatother
+\fi
+
+
+%\iffalse
+\makeatletter
+% patch \@lbibitem to print the current number before the authors
+\patchcmd{\@lbibitem}
+  {]}
+  %{][\theNAT@ctr]}
+  %{]\parbox{\widthof{999.}}{\hfill\theNAT@ctr.} }
+  %{]\hfil\theNAT@ctr. }
+  {]\makebox[\widthof{999.\ }][r]{\theNAT@ctr.\ }\hspace{2mm}}
+  {}{}
+\makeatother
+%\fi
+
+\usepackage{printlen}
+\usepackage{color}
+\setcounter{tocdepth}{2}%{5}
+\setcounter{secnumdepth}{5}
+%\setlength{\parindent}{0pt} % Default is 15pt.
+%\bibliographystyle{astron}
+\usepackage{color}
+%\usepackage[svgnames]{xcolor}
+\usepackage{xcolor}
+\usepackage{framed}
+\definecolor{shadecolor}{cmyk}{0.02,0.02,0.02,0.02}%%{named}{LightGray}%{cmyk}{0.088,0.044,0,0}%
+\definecolor{xlinkcolor}{cmyk}{1,1,0,0}
+
+\usepackage[bookmarks=false,         % show bookmarks bar?
+     pdfnewwindow=true,      % links in new window
+     colorlinks=true,    % false: boxed links; true: colored links
+     linkcolor=xlinkcolor,     % color of internal links
+     citecolor=xlinkcolor,     % color of links to bibliography
+     filecolor=xlinkcolor,  % color of file links
+     urlcolor=xlinkcolor,      % color of external links
+     final=true]{hyperref}
+
+\usepackage{longtable}
+\usepackage{import}
+\usepackage{physics}
+\usepackage{ccaption}
+
+\usepackage{subcaption}
+
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\usepackage{graphicx}	% Including figure files
+\usepackage{mathtools}
+%\usepackage[fleqn]{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{bm}		    % Bold maths symbols, including upright Greek
+
+\usepackage[makeroom]{cancel}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shapes,decorations.markings,patterns,fit}
+\usepgflibrary{patterns}
+\pgfdeclarepatternformonly{fivepointed stars2}% name
+  {\pgfpointorigin}%{\pgfpointorigin}% bottom left
+  {\pgfqpoint{5mm}{5mm}}% top right
+  {\pgfqpoint{2mm}{2mm}}% tile size
+  {% code
+   \pgftransformshift{\pgfqpoint{1mm}{1mm}}
+   \pgfpathmoveto{\pgfqpointpolar{18}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{162}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{306}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{90}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{234}{1mm}}
+   \pgfpathclose%
+   \pgfusepath{fill}
+}
+\pgfdeclarepatternformonly{fivepointed stars3}% name
+  {\pgfpointorigin}%{\pgfpointorigin}% bottom left
+  {\pgfqpoint{3mm}{3mm}}% top right
+  {\pgfqpoint{1.5mm}{1.5mm}}% tile size
+  {% code
+   \pgftransformshift{\pgfqpoint{1mm}{1mm}}
+   \pgfpathmoveto{\pgfqpointpolar{18}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{162}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{306}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{90}{1mm}}
+   \pgfpathlineto{\pgfqpointpolar{234}{1mm}}
+   \pgfpathclose%
+   \pgfusepath{fill}
+}
+
+\usepackage{wrapfig}
+
+\usepackage{mathrsfs}
+%\usepackage{microtype}
+
+\usepackage{sansmath}
+
+\usepackage[percent]{overpic}
+%\usepackage{caption}
+%\usepackage[margin=1cm]{caption}
+%\captionsetup[table]{skip=10pt}
+\usepackage[labelsep=period,labelfont={small,bf,sf}]{caption}
+\makeatletter
+\renewcommand{\fnum@figure}{\normalsize\bfseries\scshape\sffamily{{Figure \thefigure}}}
+\renewcommand{\fnum@table}{\normalsize\bfseries\scshape\sffamily{{Table \thetable}}}
+%\renewcommand{\fnum@figure}{\normalsize\scshape{{Figure \thefigure}}}
+%\renewcommand{\fnum@table}{\normalsize\scshape{{Table \thetable}}}
+\makeatother
+
+\usepackage{needspace}
+\usepackage{adjustbox}
+
+%\usepackage{setspace}
+
+%\usepackage{lineno}
+%\linenumbers
+%\usepackage{enumitem}
+
+%% SI units 
+\usepackage{savesym}
+\savesymbol{tablenum}
+\usepackage{siunitx}
+\restoresymbol{SIX}{tablenum}
+
+\usepackage{blkarray}
+
+%\usepackage[numbib]{tocbibind}
+%\usepackage{chapterbib}
+%\usepackage{etoolbox}
+%\patchcmd{\thebibliography}{\chapter*}{\section*}{}{}
+
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{flafter}
+
+
+\usepackage{eurosym}
+
+%\usepackage{savesym}
+%\savesymbol{Sigma}
+%\savesymbol{\varv}
+\usepackage[sc,osf]{mathpazo} % add possibly `sc` and `osf` options
+\usepackage[euler-digits]{eulervm}
+%\linespread{1.05}
+%\usepackage{breqn}
+\DeclareSymbolFont{matha}{OML}{txmi}{m}{it}% txfonts
+\DeclareMathSymbol{\varv}{\mathord}{matha}{118}
+
+\usepackage{fancyhdr}
+\fancypagestyle{lscape}{% 
+\fancyhf{} % clear all header and footer fields 
+\fancyfoot[LE]{}
+\fancyfoot[LO] {}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}}
+
+\def\gridline#1{\vskip6pt\hbox to\hsize{#1}\vskip6pt}
+
+\renewcommand{\mathbf}{\mathbold}
+\renewcommand{\boldsymbol}{\mathbold}
+
+\DeclareMathVersion{sans}
+\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{sans}{OML}{cmbrm}{m}{it}
+\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+
+
+%\let\originalchapter\chapter
+\usepackage{quotchap}
+%\definecolor{chaptergrey}{cmyk}{1,1,0,0}
+\usepackage{epigraph}
+\newcommand{\epigraphrulecolor}{white} %xlinkcolor}
+\makeatletter
+\renewcommand{\@epirule}{{\color{\epigraphrulecolor}\rule[.5ex]{\epigraphwidth}{\epigraphrule}}}
+\makeatother
+\renewcommand{\textflush}{flushepinormal}
+\setlength{\epigraphwidth}{0.85\textwidth}
+
+%\usepackage{titlesec}
+\usepackage[raggedright]{titlesec}
+\iffalse
+\titleformat{\chapter}[display]
+  {\normalfont\Huge\bfseries}
+  {\chaptertitlename\ \thechapter.}{30pt}{\Huge\normalfont\textit}
+\fi
+\titleformat{\chapter}[display]
+  {\sffamily\fontsize{100}{40}\bfseries}
+  {\vspace*{-2cm}\hspace*{5in}\textcolor{gray}{\thechapter}}{10pt}{\raggedright\fontsize{30}{1}\normalfont\textit}%{\Huge\sffamily}%
+\titleformat{\section}
+  {\normalfont\sffamily\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\sffamily\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalfont\sffamily\normalsize\bfseries\mathversion{sans}}
+  {\thesubsubsection}{1em}{}
+\titleformat{\paragraph}
+  {\normalfont\sffamily\normalsize\bfseries\mathversion{sans}}
+  {\theparagraph}{1em}{}
+\titleformat{\subparagraph}
+  {\normalfont\sffamily\normalsize\bfseries\mathversion{sans}}
+  {\theparagraph}{1em}{}
+%\newcommand{\sectionbreak}{\clearpage}
+
+%\renewcommand{\thechapter}{\Roman{chapter}}
+%\usepackage{chngcntr}% http://ctan.org/pkg/chngcntr
+%\counterwithout{section}{chapter}
+% make citations sc font
+%\newcommand\textlcsc[1]{\textsc{\MakeLowercase{#1}}}
+%\makeatletter
+%\def\NAT@nmfmt#1{\textlcsc{#1}}
+%\makeatother
+
+
+\newif\ifref
+%\reftrue 
+\reffalse
+\newcommand{\mb}[1]{\ifref\boldmath\textbf{#1}\unboldmath\else #1\fi}
+
+%\newcommand{\colwidth}{0.5\textwidth}
+%\newcommand\abs[1]{\left|#1\right|}
+
+%\newcommand\hmmax{0}
+%\newcommand\bmmax{0}
+
+%\newcommand{\Teff}{T_{\rm eff}}
+%\newcommand{\kmps}{\;{\rm km\;s^{{-}1}}}
+%
+\newenvironment{absolutelynopagebreak}
+  {\par\nobreak\vfil\penalty0\vfilneg
+   \vtop\bgroup}
+  {\par\xdef\tpd{\the\prevdepth}\egroup
+   \prevdepth=\tpd}
+
+\makeatletter
+    \clubpenalty10000
+    \@clubpenalty \clubpenalty
+    \widowpenalty10000
+\makeatother
+
+%\usepackage{chngcntr}
+%\counterwithout{figure}{chapter}
+%\counterwithout{table}{chapter}
+%\counterwithout{section}{chapter}
+
+\renewcommand{\baselinestretch}{1.03} 
+
+
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\Ltwo}{\ell(\ell+1)}
+\newcommand{\U}{\frac{4\pi\rho r^3}{m}}
+\newcommand{\VV}{\frac{G m \rho}{rP}}
+\newcommand{\ddr}{\frac{\text{d}}{\text{d}r}}
+\newcommand{\ddx}{\frac{\text{d}}{\text{d}\ln r}}
+\newcommand{\ddls}{\frac{\text{d}}{\text{d}\ln s}}
+\newcommand{\ddra}[1]{\frac{\text{d} #1}{\text{d}r}}
+\newcommand{\ddxa}[1]{\frac{\text{d} #1}{\text{d}\ln r}}
+\newcommand{\ddsa}[1]{\frac{\text{d} #1}{\text{d} s}}
+\newcommand{\ddlsa}[1]{\frac{\text{d} #1}{\text{d}\ln s}}
+\newcommand{\dP}{\frac{\delta P}{P}}
+%\newcommand{\dm}{\frac{\delta m}{m}}
+\newcommand{\drho}{\frac{\delta \rho}{\rho}}
+\newcommand{\dG}{\frac{\delta \Gamma_1}{\Gamma_1}}
+\newcommand{\du}{\frac{\delta u}{u}}
+%\newcommand{\dY}{\frac{\delta Y}{Y}}
+\newcommand{\Gr}{\Gamma_{1,\rho}}
+\newcommand{\GP}{\Gamma_{1,P}}
+\newcommand{\GY}{\Gamma_{1,Y}}
+\newcommand{\Kcr}{K_i^{(c, \rho)}}
+\newcommand{\Krc}{K_i^{(\rho, c)}}
+\newcommand{\Kcsr}{K_i^{(c^2, \rho)}}
+\newcommand{\Krcs}{K_i^{(\rho, c^2)}}
+%\newcommand{\KuY}{K_i^{(u,Y)}}
+%\newcommand{\KYu}{K_i^{(Y,u)}}
+\newcommand{\KGr}{K_i^{(\Gamma_1,\rho)}}
+\newcommand{\KrG}{K_i^{(\rho, \Gamma_1)}}
+\newcommand{\KGcs}{K_i^{(\Gamma_1,c^2)}}
+\newcommand{\KcsG}{K_i^{(c^2,\Gamma_1)}}
+
+
+\newcommand{\dun}{\frac{\delta u'}{u'}}
+\newcommand{\dM}{\delta M}
+\newcommand{\dR}{\delta R}
+\newcommand{\dMM}{\frac{\dM}{M}}
+\newcommand{\dRR}{\frac{\dR}{R}}
+\newcommand{\dY}{\delta Y}
+\newcommand{\KuY}{K_i^{(u',Y)}}
+\newcommand{\KYu}{K_i^{(Y,u')}}
+\newcommand{\KuYnop}{K_i^{(u,Y)}}
+\newcommand{\KYunop}{K_i^{(Y,u)}}
+
+
+
+\definecolor{echelle-yellow}{HTML}{F29559}
+\definecolor{echelle-blue}{HTML}{0571b0}
+\definecolor{echelle-red}{HTML}{DB4D48}
+\definecolor{echelle-black}{HTML}{323031}
+
+\definecolor{turn-orange}{HTML}{B16D41}
+
+\definecolor{diff-blue}{HTML}{0571B0}
+\definecolor{diff-red}{HTML}{CA0020}
+\definecolor{diff-orange}{HTML}{F97100}
+\definecolor{diff-purple}{HTML}{551A8B}
+
+%\makeatletter
+\newif\ifhbonecolumn
+\hbonecolumntrue
+%\makeatother
+\newcommand{\colwidth}{\ifhbonecolumn 0.5\linewidth\else \linewidth\fi}
+\newcommand{\figsize}{\small}%{\ifhbonecolumn\scriptsize\else\small\fi}%
+\newcommand{\figfactor}{\ifhbonecolumn 0.66 \else 1 \fi}
+\newcommand{\captwidth}{\ifhbonecolumn 7in \else\colwidth\fi}
+\newcommand{\widefigwidth}{\ifhbonecolumn 1.3\linewidth\else\linewidth\fi}
+\newcommand{\thinfigstar}{\ifhbonecolumn 0.66\linewidth\else 0.5\linewidth\fi}
+\newcommand{\thinfig}{\ifhbonecolumn 0.66\linewidth\else\linewidth\fi}
+\newcommand{\bottrim}{\ifhbonecolumn 1.4 \else 1.2 \fi}
+\newcommand{\righttrim}{\ifhbonecolumn 0.55 \else 0.45 \fi}
+\newcommand{\maybebreak}{\ifhbonecolumn\else\\\fi}
+
+
+
+% paper4
+\newcommand{\Dnu}{\Delta\nu}
+\newcommand{\dnu}{\delta\nu}
+\newcommand{\Mo}{\rm{M}_\odot}
+\newcommand{\Lo}{\rm{L}_\odot}
+\newcommand{\Ro}{\rm{R}_\odot}
+%\mathchardef\mhyphen="2D
+%\def\gridline#1{\vskip6pt\hbox to\hsize{#1}\vskip6pt}
+%\def\fig#1#2#3{\hfill\vbox{\parskip=0pt\hsize=#2
+%\includegraphics[width=#2]{#1}\vskip2pt\vtop{\centering
+%\footnotesize
+%\hsize=#2
+%#3\vskip1pt
+%}}\hfill}
+%\newbox\rotatingbox
+%\def\rotatetable{\setbox\rotatingbox=\vbox\bgroup}
+%\def\endrotatetable{\egroup
+%\rotatebox{90}{\vtop{\unvbox\rotatingbox}}
+%}
+%\usepackage{aastex6}
+\newcommand{\corr}{\mathrm{Corr}}
+%\usepackage{deluxetable}
+%\renewenvironment{description}[1][0pt]
+%  {\list{}{\labelwidth=0pt \leftmargin=#1
+%   \let\makelabel\descriptionlabel}}
+%  {\endlist}
+  
+%\defcitealias{2016ApJ...830...31B}{Bellinger \& Angelou et al. \textcolor{black}{(}2016\textcolor{black}{, BA1 hereinafter)} }
+\defcitealias{2016apj...830...31b}{Bellinger \& Angelou et al. \textcolor{black}{(}2016\textcolor{black}{, BA1 hereinafter)} }
+%\usepackage{lmodern}
+
+
+
+\defcitealias{nelder1965simplex}{Nelder--Mead}
+\defcitealias{galileo}{Galileo}
+\defcitealias{2017apj...839..116a}{Angelou \& Bellinger et al.\ }
+\defcitealias{hadamard}{Jacques Hadamard}
+\defcitealias{brunoinfinito}{Giordano Bruno}
+\newcommand{\mycitet}[1]{\citetalias{#1} (\citeyear{#1})}
+\newcommand{\mycitealt}[1]{\citetalias{#1}\citeyear{#1}}
+
+\makeatletter
+\newcommand*{\cleartoleftpage}{%
+  \clearpage
+    \if@twoside
+    \ifodd\c@page
+      \hbox{}\newpage
+      \if@twocolumn
+        \hbox{}\newpage
+      \fi
+    \fi
+  \fi
+}
+\makeatother
+%\renewcommand{\cleardoublepage}{\cleartoleftpage}
+
+
+\usepackage{changepage}
+
+\usepackage{pdfpages}
+
+\emergencystretch 3em
+
+\binoppenalty=9999
+\relpenalty=9999
+
+\hyphenation{exo-planets}
+
+\usepackage[bottom,marginal,splitrule,multiple]{footmisc}
+%\usepackage{txfonts}
+
+%\allowdisplaybreaks
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% BEGIN DOCUMENT %%%
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\label{beginning}
+%\includepdf{thesis_cover.pdf}
+\selectlanguage{english}
+\maketitle
+
+
+%{\let\newpage\relax\maketitle}
+
+%\iffalse
+%\newpage
+%\clearpage
+\newpage\thispagestyle{empty}~\newpage
+%\thispagestyle{plain}
+\thispagestyle{empty}
+\vspace*{7cm}
+%\vspace*{3.8cm}
+%\begin{center}
+%    \emph{For the love of Science}
+%\emph{``Equipped with his five senses, man explores the universe around him and calls the adventure Science.''} --- Edwin Hubble, 1929
+\hspace*{0.5cm}\begin{minipage}[c]{0.5\linewidth}
+\epigraph{``\emph{Equipped with his five senses, man explores the universe around him and calls \phantom{``}the adventure Science.}''}{--- Edwin Hubble, 1929}
+\end{minipage}
+\clearpage
+
+
+{\hypersetup{linkbordercolor=black,linkcolor=black}
+%\begingroup\let\clearpage\relax\tableofcontents\endgroup
+%\begingroup\let\clearpage\relax\listoffigures\endgroup
+%\begingroup
+%\let\clearpage\relax
+%\let\newpage\relax
+\tableofcontents
+%\endgroup
+%\newpage%\thispagestyle{empty}~\newpage
+%\begingroup
+%\let\clearpage\relax
+%\let\newpage\relax
+\listoffigures
+%\endgroup
+}
+
+%\clearpage
+%\begingroup
+%\let\clearpage\relax
+%\let\newpage\relax
+\chapter*{Summary\markboth{Summary}{Summary}}
+\addcontentsline{toc}{chapter}{Summary}
+\input{ch0_summary.tex}
+%\endgroup
+%\clearpage
+
+%\begingroup
+%\let\clearpage\relax
+%\let\newpage\relax
+\chapter*{Zusammenfassung\markboth{Zusammenfassung}{Zusammenfassung}}
+\addcontentsline{toc}{chapter}{Zusammenfassung}
+\input{ch0_zusammenfassung.tex}
+%\endgroup
+
+\subimport{ch1_introduction/}{ch1_introduction.tex}
+\subimport{ch2_ML/}{Bellinger.tex}
+\subimport{ch3_stats/}{statistical_relations.tex}
+\subimport{ch4_inversions/}{Bellinger.tex}
+
+\stepcounter{chapter}
+\chapter*{Future Prospects\markboth{Future Prospects}{Future Prospects}}
+\addcontentsline{toc}{chapter}{Future Prospects}
+\input{chN0_prospective.tex}
+
+\chapter*{Bibliography\markboth{Bibliography}{Bibliography}}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{thesis.bst}
+\setlength{\bibsep}{0.15cm}%0pt plus 1cm}
+\renewcommand{\bibsection}{}
+\bibliography{thesis}
+
+\chapter*{Publications\markboth{Publications}{Publications}}
+\addcontentsline{toc}{chapter}{Publications}
+\input{chN1_publications.tex}
+
+\chapter*{Acknowledgements\markboth{Acknowledgements}{Acknowledgements}}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{chN2_acknowledgements} 
+
+\chapter*{Curriculum vitae\markboth{Curriculum vitae}{Curriculum vitae}}
+\addcontentsline{toc}{chapter}{Curriculum vitae}
+\input{chN3_cv} 
+
+\end{document}
