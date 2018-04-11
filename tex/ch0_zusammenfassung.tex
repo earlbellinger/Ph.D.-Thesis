@@ -1,0 +1,21 @@
+Die Asteroseismologie erlaubt es uns, die innere Struktur der Sterne durch Messungen ihrer globalen Schwingungsmoden zu untersuchen. 
+Dank Missionen wie dem Weltraumteleskop \emph{Kepler} der NASA verf\"ugen wir heute \"uber qualitativ hochwertige asteroseismische Daten von fast $100$ sonnen\"ahnlichen Sternen. 
+Dies bietet die M\"oglichkeit, das Innere dieser Sterne sowie deren Alter, Masse, Radien und andere fundamentale Parameter zu bestimmen. 
+
+Diese Doktorarbeit besch\"aftigt sich in erster Linie mit zwei inversen Problemen der stellaren Astrophysik. 
+Das erste Problem besteht darin, die fundamentalen Parameter eines Sterns aus seinen Beobachtungen mit Hilfe von Argumenten der Sternevolution zu sch\"atzen. 
+Dieses Problem ist invers zu dem Vorw\"artsproblem der Simulation der theoretischen Sternentwicklung unter bestimmten Anfangsbedingungen. 
+Mit Hilfe von Methoden des \"uberwachten maschinellen Lernens wird dieses Problem in Kapitel~\ref{chap:ML} gel\"ost. 
+So ermitteln wir Alter, Masse und Radien mit einer Unsicherheit von weniger als $6\%$, $2\%$ und $1\%$. 
+In Kapitel~\ref{chap:statistical} verwenden wir Methoden des un\"uberwachten maschinellen Lernens, um zu quantifizieren wie genau sich die fundamentalen Parametern eines Sterns durch die Kombination verschiedener Arten der Sternbeobachtung bestimmen lassen.
+
+Das zweite Problem besteht darin, die Struktur eines Sterns aus seinen Pulsationsfrequenzen abzuleiten, wobei nur asteroseismische Argumente verwendet werden. 
+Dieses Problem ist invers zu dem Vorw\"artsproblem der Berechnung der theoretischen Pulsationsfrequenzen einer bekannten Sternstruktur. 
+Die L\"osung dieses Problems bietet die M\"oglichkeit, die Qualit\"at unserer Modelle der Sternentwicklung zu testen, da wir so die asteroseismische Struktur eines Sterns direkt mit theoretischen Vorhersagen vergleichen k\"onnen. 
+Dieses Problem wird in Kapitel~\ref{chap:inversion} gel\"ost. 
+Wendet man diese Technik auf die beiden sonnen\"ahnlichen Sterne des Systems 16~Cygni an, so stellt man fest, dass die Struktur des $1,03$ Sonnenmassensterns 16~Cyg~B in guter \"Ubereinstimmung mit den theoretischen Vorhersagen ist, w\"ahrend sich der massivere Stern 16~Cyg~A in seiner inneren Struktur von den am besten passenden Evolutionsmodellen unterscheidet. 
+
+Diese inversen Probleme sind im mathematischen Sinne inkorrekt gestellt, sodass (I) eine L\"osung innerhalb der Grenzen der aktuellen Theorie m\"oglicherweise nicht existiert; (II) wenn es eine L\"osung gibt, muss sie nicht eindeutig sein, da viele L\"osungen mit den Daten konsistent sein k\"onnen; und/oder (III) die L\"osungen k\"onnen in Bezug auf kleinere Schwankungen der Ausgangsdaten instabil sein. 
+Daher wird viel Sorgfalt darauf verwendet, die Menge der m\"oglichen L\"osungen zu bestimmen und bei Bedarf eine Regularisierung vorzunehmen. 
+
+Kapitel~\ref{chap:intro} leitet diese Arbeit mit der Geschichte und Theorie der Sternstruktur und -evolution ein. Der Schwerpunkt liegt hierbei auf der Theorie der stellaren Pulsationen und wie sie dazu beigetragen hat, unser Verst\"andnis der Sternevolution zu formen. Des Weiteren enth\"alt es Ableitungen der Integralkerne der stellaren Struktur, eine kurze Einf\"uhrung in die mathematisch inkorrekt gestellten inversen Probleme, und eine Diskussion \"uber einige numerische Schwierigkeiten bez\"uglich des maschinellen Lernens und der statistischen Algorithmen die verwendet werden, um diese Probleme zu l\"osen. 
