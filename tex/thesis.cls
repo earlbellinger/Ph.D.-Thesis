@@ -180,10 +180,11 @@
 \def\isbn#1{\def\@isbn{#1}}               \def\@isbn{???}
 %%
 \def\maketitle{%
-\begin{titlepage}
-\if@print
-\includepdf{thesis_cover.pdf}
-\newpage\thispagestyle{empty}\setcounter{page}{1}
+\begin{titlepage}%
+\if@print%
+\pagenumbering{roman}
+\includepdf[pages=1]{thesis_cover_final.pdf}%
+\newpage\thispagestyle{empty}\pagenumbering{arabic}\setcounter{page}{1}
 \fi
 \if@goe
 %   \newgeometry{left=1.5cm,right=1.5cm}
@@ -357,10 +358,10 @@
 			 \underline{Members of the Examination Board} \\[6mm]
 			 Reviewer:  \@refa \\[6mm]%\\[1mm]
 			 %\ifx\@instrefa\@instrefa\\[6mm]\else\fi
-			 Second Reviewer: \@refb \\[8mm]%\\[1mm] 
+			 Second Reviewer: \@refb \\[6mm]%\\[1mm] 
 			 \if@addref
 			   \@instrefb \\[6mm]
-                           2. Korreferent: \@refc \\[1mm] 
+                    Third Reviewer: \@refc \\[8mm] 
 			   \@instrefc \\[10mm]
                          \else
                            %\@instrefb \\[10mm]
@@ -399,7 +400,7 @@
 			 Second Reviewer: \@refb \\[1mm] 
 			 \if@addref
 			   \@instrefb \\[6mm]
-                           2. Korreferent: \@refc \\[1mm] 
+                           Third Reviewer: \@refc \\[1mm] 
 			   \@instrefc \\[10mm]
                          \else
                            \@instrefb \\[10mm]

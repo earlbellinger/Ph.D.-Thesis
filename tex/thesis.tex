@@ -1,9 +1,14 @@
-\documentclass[goeng, submitted]{thesis}
-%\documentclass[goeng, print]{thesis}
+%\documentclass[goeng, submitted, additionalreferee]{thesis}
+\documentclass[goeng, print, file, additionalreferee]{thesis}
 
-\title{%`Hearing the Shapes of Stars:\\
-Inverse Problems in Asteroseismology}
-%\title{Asteroseismic Inversions of Solar-like and Evolved Stars}%Forward and Inverse Problems in Asteroseismology} % TODO
+
+\makeatletter
+\newif\iffile
+\@ifclasswith{thesis}{file}{\filetrue}{\filefalse}
+\makeatother
+
+
+\title{Inverse Problems in Asteroseismology}
 \author{Earl Patrick Bellinger}
 \town{Albany, New York, USA}
 
@@ -29,6 +34,8 @@ Gesellschaft f\"ur wissenschaftliche Datenverarbeitung mbH G\"ottingen, Germany}
 \instrefereeb{\emph{Max-Planck-Institut f\"ur Sonnensystemforschung, G\"ottingen, Germany\\
 Institut f\"ur Astrophysik, Georg-August-Universit\"at G\"ottingen, Germany}}
 
+\refereec{\textbf{Prof.~Dr.~Yvonne Elsworth, FRS}}
+\instrefereec{\emph{School of Physics and Astronomy, University of Birmingham, United Kingdom}}
 
 
 \commissiona{\textbf{Prof.~Dr.~Carsten Damm}}
@@ -54,7 +61,7 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
 \publicationyear{2018}
 \submitteddate{April~5, 2018}
 \examinationdate{May~16, 2018}
-\isbn{}
+\isbn{978-3-944072-61-6}
 
 \newcommand{\comment}[1]{}
 \usepackage[german,english]{babel}
@@ -111,7 +118,19 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
 \definecolor{shadecolor}{cmyk}{0.02,0.02,0.02,0.02}%%{named}{LightGray}%{cmyk}{0.088,0.044,0,0}%
 \definecolor{xlinkcolor}{cmyk}{1,1,0,0}
 
-\usepackage[bookmarks=false,         % show bookmarks bar?
+\iffile
+\usepackage[bookmarks=true,         % show bookmarks bar?
+     bookmarksopen=true,
+     pdfnewwindow=true,      % links in new window
+     colorlinks=true,    % false: boxed links; true: colored links
+     linkcolor=black,     % color of internal links
+     citecolor=black,     % color of links to bibliography
+     filecolor=black,  % color of file links
+     urlcolor=black,      % color of external links
+     final=true]{hyperref}
+\else
+\usepackage[bookmarks=true,         % show bookmarks bar?
+     bookmarksopen=true,
      pdfnewwindow=true,      % links in new window
      colorlinks=true,    % false: boxed links; true: colored links
      linkcolor=xlinkcolor,     % color of internal links
@@ -119,6 +138,9 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
      filecolor=xlinkcolor,  % color of file links
      urlcolor=xlinkcolor,      % color of external links
      final=true]{hyperref}
+\fi
+\hypersetup{pdfstartview=Fit}
+\usepackage{bookmark}
 
 \usepackage{longtable}
 \usepackage{import}
@@ -213,7 +235,7 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
 %\usepackage{etoolbox}
 %\patchcmd{\thebibliography}{\chapter*}{\section*}{}{}
 
-\usepackage{pdflscape}
+%\usepackage{pdflscape}
 \usepackage{afterpage}
 \usepackage{flafter}
 
@@ -305,6 +327,15 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
 %\reftrue 
 \reffalse
 \newcommand{\mb}[1]{\ifref\boldmath\textbf{#1}\unboldmath\else #1\fi}
+
+\usepackage{xspace}
+\newif\iflaurent
+%\laurenttrue
+\laurentfalse
+%\newcommand{\lr}[1]{{{\iflaurent\textcolor{red}{#1}}\else{#1}\fi}}
+%\newcommand{\lr}[1]{\iffalse\else{#1}\fi}
+%\newcommand{\lr}[1]{{#1}}
+\newcommand{\lr}[1]{\iflaurent\color{red} #1 \color{black}\else #1\fi }
 
 %\newcommand{\colwidth}{0.5\textwidth}
 %\newcommand\abs[1]{\left|#1\right|}
@@ -476,6 +507,9 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
 \relpenalty=9999
 
 \hyphenation{exo-planets}
+\hyphenation{Pul-sa-tions-fre-quen-zen}
+\hyphenation{astero-seis-mol-o-gy}
+\hyphenation{helio-seis-mol-o-gy}
 
 \usepackage[bottom,marginal,splitrule,multiple]{footmisc}
 %\usepackage{txfonts}
@@ -490,17 +524,25 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
 \label{beginning}
 %\includepdf{thesis_cover.pdf}
 \selectlanguage{english}
+
+
+%\pagenumbering{roman}
 \maketitle
+%\pagenumbering{arabic}
+%\setcounter{page}{1}
 
 
 %{\let\newpage\relax\maketitle}
 
+
+\iffile\else%\newpage
 %\iffalse
 %\newpage
 %\clearpage
 \newpage\thispagestyle{empty}~\newpage
 %\thispagestyle{plain}
 \thispagestyle{empty}
+%\iffile\vspace*{4cm}\else\vspace*{7cm}\fi
 \vspace*{7cm}
 %\vspace*{3.8cm}
 %\begin{center}
@@ -510,8 +552,10 @@ Stellar Astrophysics Centre, Aarhus University, Denmark}}
 \epigraph{``\emph{Equipped with his five senses, man explores the universe around him and calls \phantom{``}the adventure Science.}''}{--- Edwin Hubble, 1929}
 \end{minipage}
 \clearpage
+\fi
 
-
+%\pagenumbering{arabic}
+%\setcounter{page}{7}
 {\hypersetup{linkbordercolor=black,linkcolor=black}
 %\begingroup\let\clearpage\relax\tableofcontents\endgroup
 %\begingroup\let\clearpage\relax\listoffigures\endgroup

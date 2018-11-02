@@ -193,7 +193,7 @@ From manipulation of Equations~(\ref{eq:numax}) and (\ref{eq:Dnu}) we find \cite
     \right)
     \left(
         \frac{\Delta\nu_\ast}{\Delta\nu_\odot}
-    \right)^2
+    \right)^{-2}
     \left(
         \frac{T_{\text{eff},\ast}}{T_{\text{eff},\odot}}
     \right)^\frac{1}{2}
@@ -205,7 +205,7 @@ From manipulation of Equations~(\ref{eq:numax}) and (\ref{eq:Dnu}) we find \cite
     \right)^3
     \left(
         \frac{\Delta\nu_\ast}{\Delta\nu_\odot}
-    \right)^4
+    \right)^{-4}
     \left(
         \frac{T_{\text{eff},\ast}}{T_{\text{eff},\odot}}
     \right)^\frac{3}{2}
@@ -307,9 +307,14 @@ Though there are variations, they instead try to optimize the result of the forw
         M(\mathbf x, \tau)
         -
         \mathbf y
-    \right] 
-    \cdot
+    \right]^T
+    %\cdot
     \boldsymbol{\Sigma}_{\mathbf y}^{-1}
+    \left[
+        M(\mathbf x, \tau)
+        -
+        \mathbf y
+    \right]
 \end{equation}
 where $\hat\cdot$ means the optimal $\cdot$, and $\boldsymbol\Sigma_{\mathbf y}$ is the covariance matrix for the observations. 
 %\newpage
@@ -435,7 +440,7 @@ This problem is difficult for multiple reasons:
     \item[Information Content.] 
     Whereas we are trying to measure a continuous function, which in principle may contain infinite information, we have only a finite set of mode frequencies with which to do it. 
     
-    Furthermore, we will only be able to form well-localized averaging kernels in regions where there is a sufficient number of mode lower turning points (recall Figure~\ref{fig:rays}). 
+    Furthermore, we will only be able to form well-localized averaging kernels in regions where a sufficient number of lower turning points are situated (recall Figure~\ref{fig:rays}). 
     This rules out some inversion methods. 
     
     %\item[Stability.] 
@@ -514,14 +519,14 @@ In this matrix I have introduced
 \begin{equation}
         y_i%^{\text{SOLA}} 
         = 
-        \int_0^R K_i^{(f_1, f_2)}(r) \cdot T(r; r_0, \Delta) \; \text{d}r. 
+        \int K_i^{(f_1, f_2)}(r) \cdot T(r; r_0, \Delta) \; \text{d}r. 
 \end{equation}
 %\begin{equation}
 %      y_i^{\text{MOLA}} = 0
 %\end{equation}
 %where $\Delta$ is the width of the target kernel. 
-Furthermore, I have introduced the Lagrange multipliers $\lambda_1, \lambda_2,$ and $\lambda_3$ to normalize the averaging kernel and to suppress the surface term. 
-Given choices of the parameters $\beta, \mu,$ and $\Delta$, the matrix $\mathbf{A}$ may be inverted %e.g.~via $\text{LDL}^\text{T}$ decomposition 
+Furthermore, I have introduced the Lagrange multipliers $\lambda_1$, $\lambda_2$, and $\lambda_3$ to normalize the averaging kernel and to suppress the surface term. 
+Given choices of the parameters $\beta$, $\mu$, and $\Delta$, the matrix $\mathbf{A}$ may be inverted %e.g.~via $\text{LDL}^\text{T}$ decomposition 
 to yield ${\mathbf{A}^{-1}\mathbf{b}=\mathbf{x}}$, from which we may deduce ${\mathbf c(r_0)}$ and hence ${f_1(r_0)}$. 
 \citet{1998esasp.418..505r,1999MNRAS.309...35R} examined the influence of each of these parameters ($\beta, \mu, \Delta$) on the inversion result. 
 In Chapter~\ref{chap:inversion} we introduce a heuristic algorithm to choose these parameters. 
@@ -596,7 +601,7 @@ Since $\mathbf{A}$ is symmetric, we can use the LDL$^T$ decomposition \citep[e.g
 \begin{equation}
     \mathbf{A} = \mathbf{LDL}^{\text{T}}
 \end{equation}
-where $\mathbf{D}$ is a square diagonal matrix with entries ${\text{diag}(\mathbf{D}) = d_i},\; {i=1\ldots N+3}$; and $\mathbf{L}$ is a lower unitriangular matrix, i.e.\ a matrix of the form %given in Equation~\ref{eq:lower-diag}.
+where $\mathbf{D}$ is a square diagonal matrix with entries \lr{${\mathbf{D}=\text{diag}(d_1, d_2, \ldots d_{N+3})}$}; and $\mathbf{L}$ is a lower unitriangular matrix, i.e.\ a matrix of the form %given in Equation~\ref{eq:lower-diag}.
 \begin{equation} \label{eq:lower-diag}
     \begin{pmatrix}
         1       &   0     & 0      & \cdots & 0 \\[3mm]
@@ -612,14 +617,19 @@ Substituting the LDL$^T$ decomposition of $\mathbf A$ into our matrix equation, 
     \Rightarrow\; \mathbf{x} &\simeq \mathbf{LD_0}^{-1}\mathbf{L}^{\text{T}}\mathbf{b}.
 \end{align}
 Since $\mathbf{A}$ is ill-conditioned and hence many of its entries are very nearly zero, I have introduced the pseudo-inverse for the diagonal matrix $\mathbf{D_0}$, which gives 
-\begin{equation}
-    \text{diag}(\mathbf{D_0}^{-1})
-    =
+\lr{\begin{equation}
+    \mathbf{D_0}^{-1} = 
+    \text{diag}\left( \delta_1, \delta_2, \ldots \delta_{N+3} \right)
+    \qquad
+    \text{where}
+    \qquad
+    \delta_i =
     \begin{cases}
-        1/d_i & \text{if } d_i > t \\
+        1/d_i & \text{if } |d_i| > t \\
         0 & \text{otherwise}
     \end{cases}
-\end{equation}
+    %\right)
+\end{equation}}
 where $t$ is a small threshold (e.g., machine precision). 
 %This then gives us the least-squares solution for $\mathbf x$.
 In this work, I calculate the LDL$^T$ decomposition using {\textsc CHOLMOD} \citep{Chen2008Algorithm8C}. 

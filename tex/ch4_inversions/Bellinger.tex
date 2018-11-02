@@ -11,7 +11,7 @@
 \label{chap:inversion}
 
 \vspace{2cm}
-The contents of this chapter were authored by E.~P.~Bellinger, S.~Basu, S.~Hekker, and W.~H.~Ball and published in December of 2017 in \emph{The Astrophysical Journal}, 851 (2), 80. 
+The contents of this chapter were authored by E.~P.~Bellinger, S.~Basu, S.~Hekker, and W.~H.~Ball and published in December of 2017 in \emph{The Astrophysical Journal}, 851 (2), 80.\footnote{Contribution statement: The work of this chapter was carried out and written by me, under the supervision of S.~Basu and S.~Hekker and in collaboration with W.~H.~Ball. } 
 \nocite{2017ApJ...851...80B}
 
 \vspace*{1cm}
@@ -162,17 +162,17 @@ Inversion of helioseismic data yields inferences of solar structure throughout m
 %\clearpage
 %\begin{landscape}
 \begin{figure}
-    \centering
+    \centering%
     %\captionsetup{width=\captwidth,font=small}
     %\makebox[\colwidth][c]{%
-        \adjustbox{trim={0.02\width} 0.005cm {0.04\width} 0.01cm, clip}{
-            \includegraphics[width=0.75\linewidth]{kernel-c2_rho-CygA.pdf}
+        \adjustbox{trim={0.02\width} 0.005cm {0.04\width} 0.01cm, clip}{%
+            \includegraphics[width=0.75\linewidth]{kernel-c2_rho-CygA.pdf}%
         }%
     %}%
     %\makebox[\colwidth][c]{%
-    \\
-        \adjustbox{trim={0.04\width} 0.005cm {0.02\width} 0.01cm, clip}{
-            \includegraphics[width=0.75\linewidth]{kernel-rho_c2-CygA.pdf}}
+    \\%
+        \adjustbox{trim={0.02\width} 0.005cm {0.04\width} 0.01cm, clip}{%
+            \includegraphics[width=0.75\linewidth]{kernel-rho_c2-CygA.pdf}}%
     %}
     \caption[$(c^2,\rho)$ kernels for 16~Cyg~A]{Kernels for the squared adiabatic sound speed and density, $K^{(c^2, \rho)}$ (top), and the reverse, $K^{(\rho, c^2)}$ (bottom), as a function of fractional radius for oscillation modes of model \emph{GOE} of 16~Cyg~A. Kernels are shown for modes with the same radial order $n$ but different spherical degree $\ell$ (see the legend). 
     \label{fig:c2-rho} }
@@ -254,17 +254,17 @@ Thus, we proceed with this pair of variables.
 %\clearpage
 %\begin{landscape}
 \begin{figure}
-    \centering
+    \centering%
     %\captionsetup{width=\captwidth,font=small}
     %\makebox[\colwidth][c]{%
-        \adjustbox{trim={0.02\width} 0.005cm {0.04\width} 0.01cm, clip}{
-            \includegraphics[width=0.75\linewidth]{kernel-u_Y-CygA.pdf}
+        \adjustbox{trim={0.02\width} 0.005cm {0.04\width} 0.01cm, clip}{%
+            \includegraphics[width=0.75\linewidth]{kernel-u_Y-CygA.pdf}%
         }%
     %}%\\ 
     %\makebox[\colwidth][c]{%
-    \\
-        \adjustbox{trim={0.04\width} 0.005cm {0.02\width} 0.01cm, clip}{
-            \includegraphics[width=0.75\linewidth]{kernel-Y_u-CygA.pdf}}
+    \\%
+        \adjustbox{trim={0.02\width} 0.005cm {0.04\width} 0.01cm, clip}{%
+            \includegraphics[width=0.75\linewidth]{kernel-Y_u-CygA.pdf}}%
     %}
     \caption[${(u,Y)}$ kernels for 16~Cyg~A]{Kernels for the squared isothermal sound speed and helium abundance, $K^{(u, Y)}$ (top), and the reverse, $K^{(Y, u)}$ (bottom), as a function of fractional radius for oscillation modes of model \emph{GOE} of 16~Cyg~A. Notice that in contrast to the $K^{(\rho, c^2)}$ kernels shown in Figure~\ref{fig:c2-rho}, the $K^{(Y, u)}$ kernels have very small values (${0 < K(r) < 0.01}$) in the interior ${r < 0.9\; R}$. \label{fig:same-n-uY} }
 \end{figure}
@@ -483,7 +483,7 @@ with $r_f$ being an arbitrary reference point (e.g. we choose ${r_f=0.2}$, altho
 We note that other choices of $\mathscr{F}$, $T$, $\mathcal{G}$, and $D$ are possible \citep[see, e.g.,][]{1985SoPh..100...65G, 1989ApJ...343..526B}, but they will not be explored here. 
 
 The SOLA inversion problem can be cast into a system of linear equations with the constraints enforced using Lagrange multipliers. 
-Given choices of $\beta, \mu,$ and $\Delta$, Equation~(\ref{eq:opt}) can be solved via matrix inversion, the details of which can be found, for example, in Chapter~10 of \citealt{basuchaplin2017}. 
+Given choices of $\beta$, $\mu$, and $\Delta$, Equation~(\ref{eq:opt}) can be solved via matrix inversion, the details of which can be found, for example, in Chapter~10 of \citealt{basuchaplin2017}. 
 See \citet{1999MNRAS.309...35R} for a description of how inversion parameters are usually selected in helioseismology. 
 Depending on the data that are available, it may be possible to form zero, one, or more well-localized averaging kernels with correspondingly small cross-term kernels and well-controlled uncertainties at different locations in the stellar interior. 
 
@@ -679,31 +679,31 @@ The averaging kernels placed at ${r_0=0.3}$ begin to develop some amplitude outs
     \centering
     \makebox[\linewidth][c]{%
         \adjustbox{trim={0cm 1.4cm 0.5cm 0.5cm},clip}{%
-            \includegraphics[width=0.47\linewidth]{inversion-p_CygAwball-m_CygA-e_CygA-CygADiffusion-mod_Gauss.pdf}
+            \includegraphics[width=0.47\linewidth]{inversion-p_CygAwball-m_CygA-e_CygA-CygADiffusion-mod_Gauss.pdf}%
         }%
         %\hspace{0.1cm}
         \adjustbox{trim={1.4cm 1.4cm 0.5cm 0.5cm},clip}{%
-            \includegraphics[width=0.47\linewidth]{inversion-p_CygBwball-m_CygB-e_CygB-CygBDiffusion-mod_Gauss.pdf}
+            \includegraphics[width=0.47\linewidth]{inversion-p_CygBwball-m_CygB-e_CygB-CygBDiffusion-mod_Gauss.pdf}%
         }%
-    }\\
+    }\\%
     \makebox[\linewidth][c]{%
         \adjustbox{trim={0cm 1.4cm 0.5cm 0.5cm},clip}{%
             \includegraphics[width=0.47\linewidth]{inversion-avg-p_CygAwball-m_CygA-e_CygA-r_diffusion-mod_Gauss.pdf}%
         }%
         %\hspace{0.1cm}
         \adjustbox{trim={1.4cm 1.4cm 0.5cm 0.5cm},clip}{%
-            \includegraphics[width=0.47\linewidth]{inversion-avg-p_CygBwball-m_CygB-e_CygB-r_diffusion-mod_Gauss.pdf}
+            \includegraphics[width=0.47\linewidth]{inversion-avg-p_CygBwball-m_CygB-e_CygB-r_diffusion-mod_Gauss.pdf}%
         }%
-    }\\
+    }\\%
     \makebox[\linewidth][c]{%
         \adjustbox{trim={0cm 0cm 0.5cm 0.5cm},clip}{%
-            \includegraphics[width=0.47\linewidth]{inversion-cross-p_CygAwball-m_CygA-e_CygA-r_diffusion-mod_Gauss.pdf}
+            \includegraphics[width=0.47\linewidth]{inversion-cross-p_CygAwball-m_CygA-e_CygA-r_diffusion-mod_Gauss.pdf}%
         }%
         %\hspace{0.1cm}
         \adjustbox{trim={1.4cm 0cm 0.5cm 0.5cm},clip}{%
-            \includegraphics[width=0.47\linewidth]{inversion-cross-p_CygBwball-m_CygB-e_CygB-r_diffusion-mod_Gauss.pdf}
+            \includegraphics[width=0.47\linewidth]{inversion-cross-p_CygBwball-m_CygB-e_CygB-r_diffusion-mod_Gauss.pdf}%
         }%
-    }
+    }%
     \caption[Hare-and-hound structure inversions]{(Caption on other page.) 
     \label{fig:model-test} }
 \end{figure}

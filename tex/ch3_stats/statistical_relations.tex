@@ -47,8 +47,8 @@
 
 The contents of this chapter were authored 
 %as ``\emph{On The Statistical Properties of the Lower Main Sequence}'' 
-by G.~C.~Angelou, E.~P.~Bellinger, S.~Hekker, and S.~Basu and published in April of 2017 in \emph{The Astrophysical Journal}, 839 (2), 116.
-\nocite{2017apj...839..116a}
+by G.~C.~Angelou, E.~P.~Bellinger, S.~Hekker, and S.~Basu and published in April of 2017 in \emph{The Astrophysical Journal}, 839 (2), 116.\footnote{Contribution statement: The work and writing of this chapter were done in equal parts between G.~C.~Angelou and myself, under the supervision of S.~Hekker and S.~Basu.} 
+\nocite{2017apj...839..116a} 
 
 %% Use \author, \affil, and the \and command to format
 %% author and affiliation information.
@@ -287,7 +287,7 @@ The variables are ordered according to their correlation with the first eigensol
 \end{figure*}
 
 %No support for footnote in caption. This footnote corresponds to the $^2$ in figure \ref{fig:filt_corr} above
-\footnotetext{As principal component analysis is the eigensolution of the correlation (or covariance) matrix, the first eigenvalue indicates the maximum variance in the variables that can be accounted for by a linear model with a single underlying `factor'.
+\footnotetext{As principal component analysis is the eigensolution of the correlation (or covariance) matrix, the first eigenvalue indicates the maximum variance in the variables that can be accounted for by a linear model with a single underlying `factor.'
 Ordering the parameters in this way  demonstrates the direction of the first principal component (PC$_1$) vector. Figure~\ref{fig:filt_corr} thus  offers a visual representation of principal component analysis which we employ in Section~\ref{sec:PCA}.}
 
 We begin our analysis with a rank correlation test, the purpose of which being to understand the 
@@ -991,7 +991,7 @@ Analysis of recent \emph{Kepler} data yields a similar result. In Figure~\ref{fi
 \subsubsection*{The frequency of maximum oscillation power -- $\nu_{\max}$} 
 
 
-Currently we are unable to predict the frequency of maximum oscillation power from first principles. \citet{1991ApJ...368..599B} and \citet{1995AA...293...87K} showed that this quantity does scale with the acoustic cut-off frequency and can thus be estimated via the Equation~(\ref{equ:nmax}) scaling relation. It is therefore expected that Table~\ref{tab:nmx} indicates that  $\nu_{\max}$ is best inferred from ${\log{} g}$  and $T_{\text{eff}}$. These are the two observables that correlate strongest those parameters used to calculate $\nu_{\max}$ in the training grid. 
+Currently we are unable to predict the frequency of maximum oscillation power from first principles. \citet{1991ApJ...368..599B} and \citet{1995A&A...293...87K} showed that this quantity does scale with the acoustic cut-off frequency and can thus be estimated via the Equation~(\ref{equ:nmax}) scaling relation. It is therefore expected that Table~\ref{tab:nmx} indicates that  $\nu_{\max}$ is best inferred from ${\log{} g}$  and $T_{\text{eff}}$. These are the two observables that correlate strongest those parameters used to calculate $\nu_{\max}$ in the training grid. 
 
 \begin{table}
 \centering
@@ -1249,7 +1249,7 @@ The other observables help constrain the predictions.
 Part of the analysis in Section~\ref{sec:qu} demonstrated the best possible (average) precision in which we can hope to infer stellar parameters. Our error analysis in Section~\ref{sec:accu} is an extension of this. Rather than assume perfect information we determined  
  the measurement accuracy required of the observables to attain a desired precision from the RF.
 Our analysis focused on the Sun and is indicative of solar-like analogues.
-In Table~\ref{tab:relabunds} we saw some of the large uncertainties associated with retrodicting abundances in low-metallicity stars. We have greater degeneracy with the efficiency of diffusion and the initial abundances. These large error scores by no means indicate that the RF is incapable of characterizing low-metallicity stars. Rather it is an honest appraisal of stellar uncertainties when we do not make assumptions of the initial abundance say through a dY/dZ  chemical evolution ``law"  or a fixed diffusion efficiency. Our error analysis here does not take into account covariances and was designed to investigate the impact on a observable-by-observable basis.
+In Table~\ref{tab:relabunds} we saw some of the large uncertainties associated with retrodicting abundances in low-metallicity stars. We have greater degeneracy with the efficiency of diffusion and the initial abundances. These large error scores by no means indicate that the RF is incapable of characterizing low-metallicity stars. Rather it is an honest appraisal of stellar uncertainties when we do not make assumptions of the initial abundance say through a dY/dZ  chemical evolution ``law"  or a fixed diffusion efficiency. Our error analysis here does not take into account covariances and was designed to investigate the impact on an observable-by-observable basis.
 A more detailed error analysis and the associated issues at low metallicity form the focus of a forthcoming paper.  
 
 
@@ -1294,7 +1294,7 @@ As GAIA is complete down to 20th magnitude we have assumed that distances and he
 \begin{table} %\scriptsize
 \centering
 %\tablewidth{0pt}
-\caption{Solar data degraded to the level expected for sun-like stars in: the TESS catalogue assuming systematic  noise of $60$~ppm~hr$^{1/2}$ from the mission, TESS assuming no systematic noise and from PLATO. For each set of observables we include the feature importances from the random forest used in characterizing the 'Sun as a star'. Note that in the case of the expected PLATO data we have perturbed a subset of frequencies according to their distance from $\nu_{\max}$. The numbers reported for the separations and ratios are thus the respective means and standard deviations of $10,000$ perturbations to the data which we evaluate to determine our parameter distributions. \label{tab:tpl}} 
+\caption{Solar data degraded to the level expected for sun-like stars in: the TESS catalogue assuming systematic  noise of $60$~ppm~hr$^{1/2}$ from the mission, TESS assuming no systematic noise and from PLATO. For each set of observables we include the feature importances from the random forest used in characterizing the `Sun as a star.' Note that in the case of the expected PLATO data we have perturbed a subset of frequencies according to their distance from $\nu_{\max}$. The numbers reported for the separations and ratios are thus the respective means and standard deviations of $10,000$ perturbations to the data which we evaluate to determine our parameter distributions. \label{tab:tpl}} 
 %\hspace*{-1.1cm}
 \begin{tabular}{l|ccc|ccc|ccc}
 \multicolumn{1}{c}{} &
@@ -1456,7 +1456,7 @@ where the five point separations are defined as:
                                 &+6\nu_1(n) - 4\nu_0(n+1) + \nu_1(n+1)\big]. \label{eqn:dlast}
 \end{align}
 We calculate dozens of oscillation frequencies per star with the mode sets available dependent on the internal structure of an individual model. We thus determine a single representative value 
-by following the prescription of \citet{2012A&A...537A..30M}. In order to mimic how the oscillation spectra would appear in an observational data we weight weight all frequencies by their position in a Gaussian envelope with  full-width at half-maximum of ${0.66\cdot\nu_{\max}{}^{0.88}}$ and centered at the predicted frequency of maximum oscillation power $\nu_{\max}$.  We then calculate the weighted median of each variable, which we denote with angled parentheses (e.g.\ ${\langle r_{1,0}\rangle}$).
+by following the prescription of \citet{2012A&A...537A..30M}. In order to mimic how the oscillation spectra would appear in an observational data, we weight all frequencies by their position in a Gaussian envelope with  full-width at half-maximum of ${0.66\cdot\nu_{\max}{}^{0.88}}$ and centered at the predicted frequency of maximum oscillation power $\nu_{\max}$.  We then calculate the weighted median of each variable, which we denote with angled parentheses (e.g.\ ${\langle r_{1,0}\rangle}$).
 
 
 
@@ -1564,7 +1564,7 @@ Qualitative correlations between the stellar parameters and the PCs in each grid
 \begin{table}
 \centering
 %\tablewidth{0pt}
-\caption{Percentage of the variance explained by each principal component. We report the explained variance percentages for the complete grid of training models (Grid A) and for the truncated set (Grid B, see Section~\ref{sec:RCT}) that better encompasses the observational parameter space. In each case we consider the grid with and without the inclusion of $\nu_{\max}$ which is estimated using the \citet{1995AA...293...87K} scaling relations rather than calculated from first principle equations. We also consider the explained variances when limits are placed on the metallicity (Grid C) and mass (Grid D) ranges of the models.  These grids are used in Section~\ref{sec:disc} to help interpret the PCs. \label{tab:PCAEV}} 
+\caption{Percentage of the variance explained by each principal component. We report the explained variance percentages for the complete grid of training models (Grid A) and for the truncated set (Grid B, see Section~\ref{sec:RCT}) that better encompasses the observational parameter space. In each case we consider the grid with and without the inclusion of $\nu_{\max}$ which is estimated using the \citet{1995A&A...293...87K} scaling relations rather than calculated from first principle equations. We also consider the explained variances when limits are placed on the metallicity (Grid C) and mass (Grid D) ranges of the models.  These grids are used in Section~\ref{sec:disc} to help interpret the PCs. \label{tab:PCAEV}} 
 \iffalse
 \tablehead{
         \colhead{}  &

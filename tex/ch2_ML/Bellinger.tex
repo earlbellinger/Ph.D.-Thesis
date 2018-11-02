@@ -4,7 +4,7 @@
 
 The contents of this chapter were authored by 
 %published in October of 2016 as ``\emph{Fundamental Parameters of Main-Sequence Stars in an Instant with Machine Learning}'' by 
-E.~P.~Bellinger, G.~C.~Angelou, S.~Hekker, S.~Basu, W.~H.~Ball, and E.~Guggenberger and published in October of 2016 in \emph{The Astrophysical Journal}, 830 (1), 31. 
+E.~P.~Bellinger, G.~C.~Angelou, S.~Hekker, S.~Basu, W.~H.~Ball, and E.~Guggenberger and published in October of 2016 in \emph{The Astrophysical Journal}, 830 (1), 31.\footnote{Contribution statement: The work of this chapter was carried out by me; the text was mainly written by me, with contributions from G.~C.~Angelou, in collaboration with the other authors.} 
 \nocite{2016apj...830...31b}
 
 \section*{Chapter Summary}
@@ -260,7 +260,7 @@ When supplied with enough \mb{stellar models}, the random forest reduces the var
 %%% Results %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
-We perform three tests of our method. We begin with a hare-and-hound simulation exercise to show that we can can reliably recover parameters. We then move to the Sun and the solar-like stars 16~Cyg~A \& B, which have been the subjects of many investigations; and we conclude by applying our method to $34$ \emph{Kepler} objects-of-interest. In each case, we train our random forest regressor on the subset of observational data that is available for the stars being processed. In the case of the Sun and 16~Cygni, we know very accurately their radii, luminosities, and surface gravities. For other stars, we will predict this information instead of supplying it. 
+We perform three tests of our method. We begin with a hare-and-hound simulation exercise to show that we can reliably recover parameters. We then move to the Sun and the solar-like stars 16~Cyg~A \& B, which have been the subjects of many investigations; and we conclude by applying our method to $34$ \emph{Kepler} objects-of-interest. In each case, we train our random forest regressor on the subset of observational data that is available for the stars being processed. In the case of the Sun and 16~Cygni, we know very accurately their radii, luminosities, and surface gravities. For other stars, we will predict this information instead of supplying it. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -576,36 +576,46 @@ The method we have presented here is currently only applicable to main-sequence 
 \label{sec:selection}
 To prevent statistical bias towards the evolutionary tracks that generate the most models, i.e.\ the ones that require the most careful calculations and therefore use smaller time-steps, or those that live on the main sequence for a longer amount of time; we select ${n=64}$ models from each evolutionary track such that the models are as evenly-spaced in core hydrogen abundance as possible. \mb{We chose $64$ because it is a power of two, which thus allows us to successively omit every other model when testing our regression routine and still maintain regular spacings.}
 
-Starting from the original vector of length $m$ of core hydrogen abundances $\vec X$, we find the subset of length $m$ that is closest to the optimal spacing $\vec B$, where
+Starting from the original vector of length $n$ of core hydrogen abundances $\mathbf x$, we find the subset of length $m$ that is closest to the optimal spacing $\mathbf b$, where\lr{\footnote{\lr{This equation has been corrected from the original publication.}}
 \begin{equation}
-  \vec B \equiv \left[
+    b_i
+    =
+    X_T + (i-1) \cdot \frac{X_Z - X_T}{m-1},
+    \qquad
+    i=1,\ldots,m
+\end{equation}}
+\iffalse
+\begin{equation}
+  \mathbf b = \left[
     X_T, 
     \ldots, 
     \frac{(m-i)\cdot X_T + X_Z}{m-1}, 
     \ldots, 
     X_Z
-  \right]
+  \right],
+  \qquad i=(m-1),\ldots,2
 \end{equation}
-with $X_Z$ being the core hydrogen abundance at ZAMS and $X_T$ being that at TAMS. To obtain the closest possible vector to $\vec B$ from our data $\vec X$, we solve a transportation problem using integer optimization \citep{23145595}. First we set up a cost matrix $\boldsymbol{C}$ consisting of absolute differences between the original abundances $\vec X$ and the ideal abundances $\vec B$:
+\fi
+with $X_Z$ being the core hydrogen abundance at ZAMS and $X_T$ being that at TAMS. To obtain the closest possible vector to $\mathbf b$ from our data $\mathbf x$, we solve a transportation problem using integer optimization \citep{23145595}. First we set up a cost matrix $\boldsymbol{C}$ consisting of absolute differences between the original abundances $\mathbf x$ and the ideal abundances $\mathbf b$:
 \begin{equation} 
-  \boldsymbol{C} \equiv \left[
+  \boldsymbol{C} = \left[
   \begin{array}{cccc}
-    \abs{B_1-X_1} & \abs{B_1-X_2} & \dots & \abs{B_1-X_n} \\
-    \abs{B_2-X_1} & \abs{B_2-X_2} & \dots & \abs{B_2-X_n} \\
+    \abs{b_1-x_1} & \abs{b_1-x_2} & \dots & \abs{b_1-x_n} \\
+    \abs{b_2-x_1} & \abs{b_2-x_2} & \dots & \abs{b_2-x_n} \\
     \vdots & \vdots & \ddots & \vdots \\
-    \abs{B_m-X_1} & \abs{B_m-X_2} & \dots & \abs{B_m-X_n}
+    \abs{b_m-x_1} & \abs{b_m-x_2} & \dots & \abs{b_m-x_n}
   \end{array} \right].
 \end{equation}
-We then require that exactly $m$ values are selected from $\vec X$, and that each value is selected no more than one time. Simply selecting the closest data point to each ideally-separated point will not work because this could result in the same point being selected twice; and selecting the second closest point in that situation does not remedy it because a different result could be obtained if the points were processed in a different order. 
+We then require that exactly $m$ values are selected from $\mathbf x$, and that each value is selected no more than one time. Simply selecting the closest data point to each ideally-separated point will not work because this could result in the same point being selected twice; and selecting the second closest point in that situation does not remedy it because a different result could be obtained if the points were processed in a different order. 
 
 We denote the optimal solution matrix by $\hat{\boldsymbol{S}}$, and find it by minimizing the cost matrix subject to the following constraints:
 \begin{align}
   \hat{\boldsymbol{S}} = \underset{\boldsymbol S}{\arg\min} \; & \sum_{ij} S_{ij} C_{ij} \notag\\
-  \text{subject to } & \sum_j S_{ij} \leq 1 \; \text{ for all } i=1\ldots N \notag\\
-  \text{and } & \sum_i S_{ij} = 1 \; \text{ for all } j=1\ldots M.
+  \text{subject to } & \sum_j S_{ij} \leq 1 \; \text{ for all } i=1\ldots n \notag\\
+  \text{and } & \sum_i S_{ij} = 1 \; \text{ for all } j=1\ldots m.
   \label{eq:optimal-spacing}
 \end{align}
-The indices of $\vec X$ that are most near to being equidistantly-spaced are then found by looking at which columns of $\hat{\boldsymbol S}$ contain ones, and we are done. The solution is visualized in Figure~\ref{fig:nearly-even}.
+The indices of $\mathbf x$ that are most near to being equidistantly-spaced are then found by looking at which columns of $\hat{\boldsymbol S}$ contain ones, and we are done. The solution is visualized in Figure~\ref{fig:nearly-even}.
 
 \afterpage{
 \clearpage

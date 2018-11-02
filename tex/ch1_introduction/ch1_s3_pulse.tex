@@ -3,7 +3,7 @@
 \begin{shaded}
 \noindent The purpose of this section is to give the reader a sufficient background summary on non-radial stellar pulsations in order to be able to understand the remainder of this thesis. 
 I draw heavily here from the numerous textbooks that have been written on stellar pulsations, which include works by \cite{1926ics..book.....E}, \cite{1949ptvs.book.....R}, \cite{1979nos..book.....U}, \cite{1980tsp..book.....C}, \cite{2010aste.book.....a}, and \cite{basuchaplin2017}. 
-Additionally, the long reviews by \cite{1958HDP....51..353L}, \citet{1993afd..conf..399G}, and \citet{2016lrsp...13....2b} are valuable references.
+Additionally, the long reviews by \cite{1958HDP....51..353L}, \citet{1993afd..conf..399G}, and \citet{2016lrsp...13....2b} were valuable references. 
 I will perform calculations in this section using the \emph{Aarhus adiabatic oscillation package} \citep[\textsc{ADIPLS},][]{2008Ap&SS.316..113C}. 
 \end{shaded}
 
@@ -93,7 +93,7 @@ The perturbation induces a velocity field $\vec{\varv}$ given by
 \begin{equation}
     \vec{\varv} (\vec r, t) 
     = 
-    \frac{\delta}{\delta t}\vec\xi (\vec r, t).
+    \frac{\partial}{\partial t}\vec\xi (\vec r, t).
 \end{equation}
 This velocity field is then controlled by the following equations: 
 %the continuity equation, the equation of motion, the Poisson equation, and the heat equation. 
@@ -105,9 +105,9 @@ This velocity field is then controlled by the following equations:
     \item[The continuity equation.]
     As we've seen previously, the equation of continuity is a statement of mass conservation (\emph{cf}.~Equation~\ref{eq:cons-mass}). 
     It states that mass cannot teleport through the star, but rather must travel through it continuously. 
-    The equation can be given as 
+    \lr{The equation can be given as 
     \begin{equation} \label{eq:continuity} 
-        \frac{\delta \rho}{\delta t}
+        \frac{\partial \rho}{\partial t}
         +
         \nabla
         \cdot
@@ -117,41 +117,10 @@ This velocity field is then controlled by the following equations:
         =
         0
     \end{equation}
-    where $\nabla\cdot$ is the divergence vector operator, i.e., %in Euclidean coordinates,
-    \begin{equation}
-        \nabla\cdot(\rho \vec{\varv})
-        \equiv
-        \sum_i \frac{\delta}{\delta r_i} (\rho v_i).
-    \end{equation}
-    \iffalse
-    \begin{equation}
-        %\mathbf{A}
-        %\equiv
-        %\left(
-        %    X, Y, Z
-        %\right)
-        %\;\Rightarrow\;
-        \nabla\cdot (\rho \vec{\varv}) %\mathbf{A} 
-        \equiv
-        \left[
-            \frac{\delta}{\delta x}
-            (\rho v_x)
-            +
-            \frac{\delta}{\delta y}
-            (\rho v_y)
-            +
-            \frac{\delta}{\delta z}
-            (\rho v_z)
-        \right].
-    \end{equation}
-    \fi
-    %. 
-    %In the absence of a flow, i.e., the equilibrium state, we recover the stellar structure equation of mass conservation (\ref{eq:cons-mass}). 
-    %Notice that neglecting the velocity and time derivatives would give us back the conservation of mass equation (\ref{eq:cons-mass}) that we used to calculate the equilibrium structure. %with Equation~(\ref{eq:cons-mass}). 
-    
+    where $\nabla\cdot$ is the divergence vector operator.} 
     Substituting the perturbed quantities (Equation~\ref{eq:eulerean}) into Equation~\ref{eq:continuity}, we get 
     \begin{equation}
-        \frac{\delta}{\delta t} \left[
+        \frac{\partial}{\partial t} \left[
             \rho_0(\vec r)
             +
             \rho' (\vec r, t)
@@ -163,7 +132,7 @@ This velocity field is then controlled by the following equations:
                 +
                 \rho'(\vec r, t)
             \right]
-            \frac{\delta\vec\xi}{\delta t} 
+            \frac{\partial\vec\xi}{\partial t} 
         \right\}
         =
         0.
@@ -186,11 +155,11 @@ This velocity field is then controlled by the following equations:
     }\end{equation}
     i.e., the perturbed equation of continuity. $\hfill\square\;$
     
-    \item[The equation of motion.] The general Navier--Stokes momentum equation can be expressed as
+    \item[The equation of motion.] \lr{To first order, the general Navier--Stokes momentum equation can be expressed as}
     \begin{equation} 
         \rho
         \left(
-            \frac{\delta}{\delta t}
+            \frac{\partial}{\partial t}
             +
             \vec{\varv}
             \cdot
@@ -213,7 +182,7 @@ This velocity field is then controlled by the following equations:
     \begin{equation} \label{eq:momentum} %\boxed{
         \rho
         \left(
-            \frac{\delta}{\delta t}
+            \frac{\partial}{\partial t}
             +
             \vec{\varv}
             \cdot
@@ -227,23 +196,23 @@ This velocity field is then controlled by the following equations:
         \rho \vec g%\nabla \Phi.
     \end{equation}
     Notice that this equation at equilibrium is the familiar equation of hydrostatic support (\ref{eq:cons-mom-r}):
-    \begin{equation}
-        0 = -\nabla P_0 + \rho_0 g_0.
-    \end{equation}
+    \lr{\begin{equation}
+        0 = -\nabla P_0 + \rho_0 \vec{g}_0.
+    \end{equation}}
     %We may now substitute in Equation~(\ref{eq:momentum}) the gravitational acceleration for the gradient of the gravitational potential:
     Substituting the perturbations into Equation~(\ref{eq:momentum}) and dropping all higher-order terms, we find the perturbed equation of motion:
-    \begin{equation} \label{eq:perturbed-motion} \boxed{
-        \rho_0
-        \frac{\delta^2 \vec\xi}{\delta t^2}
+    \lr{\begin{equation} \label{eq:perturbed-motion} \boxed{
+        \rho_0\,
+        \frac{\partial^2 \vec\xi}{\partial t^2}
         =
         -\nabla P'
-        +
+        -
         \rho_0 \nabla \Phi'
-        +
-        \rho' \nabla \Phi_0.
-    }\end{equation}
-    Here I have introduced the gravitational potential $\Phi$, whose gradient is the gravitational acceleration: %, i.e., the gradient of the gravitational acceleration: 
-    \begin{equation}
+        -
+        \rho' \nabla \Phi_0
+    }\,.\end{equation}
+    Here I have introduced the gravitational potential $\Phi$, the negative gradient of which is the gravitational acceleration: %, i.e., the gradient of the gravitational acceleration: 
+    \begin{equation} \label{eq:grav-pot}
         \vec g 
         =
         - \nabla \Phi
@@ -253,11 +222,11 @@ This velocity field is then controlled by the following equations:
         \Phi(\vec r, t)
         =
         -G
-        \int_{V_0}
-            \frac{\rho}{|\vec\xi|}
-        \;\text{d}^3 \vec r
+        \int_{V}
+            \frac{\rho}{|\vec r - \vec x|}
+        \;\text{d}^3 \vec{x}
     \end{equation}
-    where $V_0$ is the volume of the star at equilibrium. 
+    where $V$ is the volume of the star at equilibrium.} 
     %and then we find the perturbed equation of motion:
     %where $\mathbf{\Phi}$ is the gravitational potential. 
     
@@ -276,14 +245,14 @@ This velocity field is then controlled by the following equations:
     \begin{equation} \label{eq:perturbed-poisson} \boxed{
         \nabla^2 \Phi'
         =
-        4\pi G \rho'.
-    }\end{equation}
+        4\pi G \rho'
+    }\,.\end{equation}
     
     \item[The energy equation.]
-    The energy equation completes the system by connecting pressure to density thermodynamically. 
+    The energy equation completes the system by thermodynamically connecting pressure to density. 
     Since I have assumed adiabatic pulsations, the energy equation can be given as
     \begin{equation} %\boxed{
-        \frac{\delta P}{\delta t}
+        \frac{\partial P}{\partial t}
         +
         \vec{\varv}
         \cdot
@@ -291,7 +260,7 @@ This velocity field is then controlled by the following equations:
         =
         c^2 
         \left(
-            \frac{\delta \rho}{\delta t}
+            \frac{\partial \rho}{\partial t}
             +
             \vec{\varv} \cdot \nabla \rho
         \right)
@@ -305,74 +274,36 @@ This velocity field is then controlled by the following equations:
         =
         c^2_0 \left( 
             \rho' + \vec \xi \cdot \nabla \rho_0
-        \right).
-    }\end{equation}
+        \right)
+    }\,.\end{equation}
 \end{description}
 
-%\noindent We now have four coupled partial differential equations describing fluid flow throughout the stellar interior. 
-%We shall make use of the assumption of linearity by perturbing the above equations and keeping only the first-order terms. 
-%We shall now perturb the variables in the above equations. 
-%As an example, the density perturbation is 
-\iffalse
-Since we are describing the result of a perturbation, we can consider each variable of stellar structure as being composed of a perturbed and an unperturbed component. 
-%I will now perturb each variable of stellar structure and reintroduce them into the above equations. 
-
-Perturbing each variable of stellar structure and reintroduce them into the above equations, and furthermore making use of the linearity assumption by keeping only the first-order terms, we get: 
-\begin{align}
-    \rho' 
-    + 
-    \nabla \cdot \left( 
-        \rho_0 \vec\xi 
-    \right) 
-    &= 
-    0 
-    \\
-    \rho_0
-    \frac{\delta^2 \vec\xi}{\delta t^2}
-    +
-    \nabla P'
-    -
-    \rho_0 \nabla \Phi'
-    -
-    \rho' \nabla \Phi_0
-    &=
-    0
-    \\
-    \nabla^2 \Phi'
-    -
-    4\pi G \rho'
-    &=
-    0
-    \\
-    P'
-    +
-    \vec \xi \cdot \nabla P
-    -
-    c^2_0 \left( 
-        \rho' + \vec \xi \cdot \nabla \rho_0
-    \right)
-    &=
-    0
-\end{align}
-where I have applied the Eulerian perturbation to the first three equations and the Lagrangian perturbation to the heat equation. 
-\fi
 
 \subsubsection*{Symmetry}
 Now I will apply the assumption of symmetry and consider only oscillatory solutions on a sphere. 
-I separate the displacement vector into radial and horizontal components ${\vec\xi\equiv[\xi_r, \xi_h]}$. 
-The radial displacement, for example, can be now expressed as 
+\lr{I separate the displacement vector into radial and horizontal components 
+%${\vec\xi = \xi_r \hat a_r + \vec \xi_h}$, ${\vec\xi_h = \xi_\theta \hat a_\theta + \xi_\phi \hat a_\phi}$, 
 \begin{equation}
+    \vec\xi = \xi_r \hat a_r + \vec \xi_h, 
+    \qquad 
+    \vec\xi_h = \xi_\theta \hat a_\theta + \xi_\phi \hat a_\phi
+\end{equation}
+where $\hat a$ are unit vectors in indicated directions. 
+%${\vec\xi\equiv[\xi_r, \xi_h]}$.
+The radial component of the displacement, for example, can now be expressed as
+%The radial displacement, for example, can be now expressed as 
+\begin{align}
     \xi_r(r, \theta, \phi, t)
-    =
+    &=
     \xi_r(r)
     Y_{\ell}(\theta, \phi)
     \exp \{
         -i\omega t
-    \}
-\end{equation}
-where $\theta$ and $\phi$ are latitude and longitude, $Y_{\ell}$ is Laplace's spherical harmonic for degree $\ell$ (\emph{cf.}~Figure~\ref{fig:sph}), $i$ is the imaginary unit, and ${\omega=2\pi\nu}$ is the cyclic frequency. 
-When $\omega$ is real, the solution is oscillatory; when it is imaginary, the solution either grows or delays. 
-Substituting these spherical, symmetric, harmonic variables into the previous equations (\ref{eq:perturbed-continuity},\ref{eq:perturbed-motion},\ref{eq:perturbed-poisson},\ref{eq:perturbed-energy}), after some manipulations we may find 
+    \} %\vphantom{\Bigg\{}
+\end{align}
+where $\theta$ and $\phi$ are latitude and longitude, $Y_{\ell}$ is Laplace's spherical harmonic for degree $\ell$ (\emph{cf.}~Figure~\ref{fig:sph}), $i$ is the imaginary unit, and ${\omega=2\pi\nu}$ is the cyclic frequency.}
+When $\omega^2$ is real, the solution is oscillatory; when it is imaginary, the solution either grows or delays. 
+Substituting the spherical, symmetric, harmonic variables into the previous equations (\ref{eq:perturbed-continuity}, \ref{eq:perturbed-motion}, \ref{eq:perturbed-poisson}, \ref{eq:perturbed-energy}) and dropping subscripts for unperturbed quantities, after some manipulations we may find 
 \begin{gather} \label{eq:oscillation1}
     \frac{\text{d}\xi_r}{\text{d}r}
     =
@@ -380,7 +311,7 @@ Substituting these spherical, symmetric, harmonic variables into the previous eq
         \frac{2}{r}
         +
         \frac{1}{\Gamma_1 P}
-        \frac{\text{d}P}{\text{D}r}
+        \frac{\text{d}P}{\text{d}r}
     \right)
     \xi_r
     +
@@ -393,7 +324,7 @@ Substituting these spherical, symmetric, harmonic variables into the previous eq
     P'
     -
     \frac{\ell(\ell+1)}{\omega^2 r^2}
-    \Phi'
+    \Phi' \vphantom{\Bigg(}
     \\
     \frac{\text{d}P'}{\text{d}r}
     =
@@ -407,11 +338,12 @@ Substituting these spherical, symmetric, harmonic variables into the previous eq
     P'
     +
     \rho \frac{\text{d} \Phi'}{\text{d} r}
+    \vphantom{\Bigg(}
     \\
     \frac{1}{r^2}
     \frac{\text{d}}{\text{d}r}
     \left(
-        r^2
+        r^2\,
         \frac{\text{d}\Phi'}{\text{d}r}
     \right)
     =
@@ -424,9 +356,41 @@ Substituting these spherical, symmetric, harmonic variables into the previous eq
     \right)
     +
     \frac{\ell(\ell+1)}{r^2}
-    \Phi'. \label{eq:oscillation3}
-\end{gather}
-Here I have introduced the \emph{Brunt-V\"ais\"al\"a} and \emph{Lamb} frequencies: 
+    \Phi' \vphantom{\Bigg(}
+    \label{eq:oscillation3}
+    %\\
+    %\xi_h(r)
+    %&=\label{eq:oscillation3}
+\end{gather}%
+\lr{as well as 
+\begin{gather}
+    \vec\xi_h(r, \theta, \phi, t) 
+    =
+    \sqrt{4\pi}\,
+    \xi_h(r)
+    %\frac{\sqrt{4\pi}}{r\omega^2} \left( 
+    %    \frac{P'}{\rho} - \Phi'
+    %\right)
+    \left(
+        \frac{\partial Y_\ell}{\partial \theta}\,
+        \hat{a}_\theta
+        +
+        \frac{1}{\sin\theta}
+        \frac{\partial Y_\ell}{\partial \phi}\,
+        \hat{a}_\phi
+    \right)
+    \exp \{
+        -i\omega t
+    \} \vphantom{\Bigg(}
+    \\
+    \xi_h(r)
+    =
+    \frac{1}{r\omega^2} \left( 
+        \frac{1}{\rho}\, P' - \Phi'
+    \right). \vphantom{\Bigg(}
+\end{gather}}
+%where $\hat a$ are unit vectors in the indicated directions. 
+Here I have introduced the \emph{Brunt-V\"ais\"al\"a} and \emph{Lamb} \lr{squared} frequencies: 
 \begin{gather} \label{eq:brunt-vaisala}
 %\begin{aligned}
     N^2
@@ -527,7 +491,7 @@ The pattern of frequencies can be summarized to first-order approximation as
     \nu_{n,\ell} \simeq \Delta\nu \left( n + \frac{\ell}{2} + \epsilon \right)
 \end{equation}
 where $\nu_{n,\ell}$ is the frequency of mode (${n,\ell}$) and $\epsilon$ is a phase shift (${\epsilon_\odot\simeq 1.6}$). 
-The spacing ${\Delta\nu}$ is called the \emph{large frequency separation} and is related to the inverse sound travel time and proportional to the stellar mean density \citep{1986apj...306l..37u}:
+The spacing ${\Delta\nu}$ is called the \emph{large frequency separation} and is related to the inverse sound travel time and proportional to the \lr{root mean density} of the star \citep{1986apj...306l..37u, 1995A&A...293...87K}:
 \begin{equation}
     \Delta\nu
     \simeq
@@ -566,7 +530,7 @@ On the other hand, when considering the precision with which ${\Delta\nu_{\odot}
 This difference arises due to our ill treatment of the stellar surface, which we will address later in this section. 
 
 %The quantity $\Delta\nu$ is the \emph{large frequency separation}---the spacing between consecutive radial mode frequencies. %---which turns out to be proportional to the stellar mean density and approximately equal to the inverse sound travel time through the star:
-A higher-order expansion of the asymptotic expression additionally gives a term known as the \emph{small frequency separation}, the spacing between modes adjacent in frequency and whose spherical degree differs by two: 
+A higher-order expansion of the asymptotic expression additionally gives a term known as the \emph{small frequency separation}, the spacing between modes adjacent in frequency and whose spherical degree differs by two \lr{\citep{1980ApJS...43..469T}}: 
 \begin{equation} \label{eq:dnu}
     \delta\nu_{n,\ell}
     =
@@ -581,14 +545,14 @@ A higher-order expansion of the asymptotic expression additionally gives a term 
         \frac{\text{d}r}{r}.
 \end{equation}
 As we can see, the small frequency separation is sensitive to the sound speed gradient, and is therefore a good proxy for the conditions in the stellar core, where the sound speed gradient changes sign (\emph{cf.}~Figure~\ref{fig:profs}). 
-This makes ${\delta\nu}$ a good diagnostic of main sequence age. 
+This makes ${\delta\nu}$ a diagnostic of main-sequence age. 
 %This term can also be calculated from the observations: 
 We will make use of these relations to infer the properties of stars in Chapter~\ref{chap:ML}, and use computational methods to further understand what properties of stars they reflect in Chapter~\ref{chap:statistical}. 
 The average small frequency separation between solar oscillation modes with (${\ell=0},\;{\ell=2}$) is
 \begin{equation}
     \delta\nu_\odot \simeq 8.957 \pm 0.059\;\mu\text{Hz}
 \end{equation}
-and for our solar model is ${\delta\nu=8.939\;\mu\text{Hz}}$, which is in good agreement. 
+and for our solar model, ${\delta\nu=8.939\;\mu\text{Hz}}$, which is good agreement. 
 %Asymptotically, the small frequency separation can be given as 
 %\begin{equation} 
 %\end{equation}
@@ -630,13 +594,13 @@ where $\nu_{ac}$ is the acoustic cutoff frequency, with ${\nu_{ac,\odot} \approx
     I_{n,\ell}
     =
     \frac{4\pi}{M}
-    \frac{\int 
-            \left[
+    \frac{\int \rho
+            \left(
                 |\xi_r|^2
                 +
                 \Ltwo |\xi_h|^2
-            \right] 
-            r^2\rho
+            \right) 
+            r^2
         \;\text{d}r}{
             |\xi_r(r=R)|^2
             +
@@ -647,6 +611,17 @@ where $\nu_{ac}$ is the acoustic cutoff frequency, with ${\nu_{ac,\odot} \approx
 However, Figure~\ref{fig:solar_freq_diffs} further shows that even after correcting for the surface term, differences remain. 
 This implies that even beyond the near-surface layers, the structure of the Sun differs from the model. 
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio,trim={0cm 0cm 0cm 0.1cm}, clip]{figs/pulse/freq-diffs-solar.pdf}%solar_freq_diffs-hlD.pdf} 
+    \caption[The solar surface effect]{Differences in oscillation frequencies between the Sun and the best-fitting solar model, in the sense of (model $-$ Sun). 
+    Even after correcting for the surface term, substantial differences remain. 
+    Being that solar frequencies are measured on the order of one part in a thousand, the uncertainties are too small to be visible at this resolution. 
+    The offset at zero is likely due to the assumed solar radius differing from the helioseismic radius. 
+    The shaded region indicates what the frequency range of the Sun might be if it were a field star observed by \emph{Kepler}. 
+    \label{fig:solar_freq_diffs}} 
+\end{figure} 
+
 This motivates the inverse approach. 
 We have seen that evolutionary theory can produce a model that agrees with the overall properties of the Sun. 
 However, a detailed inspection of the mode frequencies of the model reveals significant disagreement between theory and observation, even after applying corrections. 
@@ -655,17 +630,6 @@ This problem of deducing the structure of a star from its oscillation frequencie
 In order to pose the inverse problem in a manner that we can solve, however, it is convenient to first make some slight adjustments to our statement of the respective forward problem. 
 
 %By considering the structure of the stellar model until it agrees with the observed oscillation mode frequencies, helioseismic and asteroseismic inversions allow the actual structure of the Sun (or the star under investigation) to be revealed, and be revealed in a way that is independent of the theory of stellar evolution. 
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figs/pulse/freq-diffs-solar.pdf}%solar_freq_diffs-hlD.pdf} 
-    \caption[The solar surface effect]{Differences in oscillation frequencies between the Sun and the best-fitting solar model, in the sense of (model $-$ Sun). 
-    Even after correcting for the surface term, substantial differences remain. 
-    Being that solar frequencies are measured on the order of one part in a thousand, the uncertainties are too small to be visible at this resolution. 
-    The offset at zero is likely due to the assumed solar radius differing from the helioseismic radius. 
-    The shaded region indicates what the frequency range of the Sun might be if it were a field star observed by \emph{Kepler}. 
-    \label{fig:solar_freq_diffs}} 
-\end{figure} 
 
 
 \subsection{The Relative Forward Problem} \label{sec:variational}
@@ -683,7 +647,7 @@ Thus, since we are able to observe frequencies of real stars, we may substitute 
 To give a concrete example, I have calibrated another solar model using different assumptions on the physics of the stellar interior. 
 In particular, this second model differs in that it does not include the effects of elemental diffusion and gravitational settling (i.e., $\mathbf{D}$ is the null matrix in Equation~\ref{eq:evol-diffusion}). 
 This model has the same mass, radius, luminosity, metallicity, and age as the diffusion model---yet it differs in internal structure (see Figure~\ref{fig:prof_diffs}). %. shows the relative differences in internal structure between these two models of the Sun. %isothermal sound speed $u$, density $\rho$, the first adiabatic exponent $\Gamma_1$, and helium abundance $Y$ between these two models of the Sun. 
-The differences in internal structure then gives rise to differences in oscillation mode frequencies. %, and the kernel functions quantify that response. 
+The differences in internal structure then give rise to differences in oscillation mode frequencies. %, and the kernel functions quantify that response. 
 
 In order to state the relative forward problem, I will first put the oscillation equations in their so-called \emph{variational formulation}, and then %, which requires the assumption of the zero-boundary conditions. 
 linearize the variational frequencies around a reference model. 
@@ -731,70 +695,75 @@ The end result will be a Fredholm integral equation relating the relative differ
 The perturbed hydrodynamical equations  (\ref{eq:oscillation1}--\ref{eq:oscillation3}) feature derivatives of the displacement vector. 
 %If we seek only periodic solutions, then we obtain 
 Since we have sought only periodic solutions, we have
-\begin{equation}
+\lr{\begin{equation}
     \vec\xi(t)
     =
     \vec\xi\cdot\exp\{i\omega t\}
     \qquad \Rightarrow \qquad
-    \frac{\delta\vec\xi}{\delta t}
+    \frac{\partial\vec\xi}{\partial t}
     =
-    -\omega\vec\xi.
+    -i\omega\vec\xi.
     %\rho \frac{\delta^2 \vec\xi}{\delta t^2}
     %=
     %-\omega^2 \rho \vec\xi. 
-\end{equation}
-Combining the perturbed equations, we can arrive at 
-\begin{equation} \label{eq:first-omega}
-    \omega^2 \vec\xi
+\end{equation}}
+Combining the perturbed equations, we can arrive at \citep[e.g.,][]{1979nos..book.....U}
+\lr{\begin{equation} \label{eq:first-omega}
+    -\omega^2 \rho \vec\xi
     =
-    \frac{\nabla \Phi}{\rho}
-    \nabla \cdot \left(
-        \rho \vec \xi 
-    \right)
-    +
-    \rho \nabla \Phi'
-    -
-    \frac{1}{\rho}\nabla \left(
+    \nabla \left(
         c^2 \rho \nabla \cdot \vec \xi
         +
         \nabla P \cdot \vec \xi
     \right)
-\end{equation}
+    -
+    \vec g \,
+    %\left[ 
+        \nabla \cdot \left(
+            \rho \vec \xi 
+        \right)
+    %\right]
+    +
+    \rho \vec g' %\nabla \Phi'
+\end{equation}}
 where I have dropped the subscripts on the unperturbed quantities. 
 This equation relates the cyclic frequency $\omega$ to the properties of the stellar structure. 
-We can substitute the perturbed gravitational potential with 
-\begin{equation}
-    \Phi'
+Recalling Equation~(\ref{eq:grav-pot}), we can substitute the perturbed gravitational potential with 
+\lr{\begin{equation}
+    \vec g'
     =
-    -G
+    -\nabla \Phi'
+    =
+    G \nabla
     \int_V
-        \frac{\rho'}{|\vec\xi|}%\vec r - \vec r'|}
+        \frac{\rho'}{|\vec r - \vec x|}%\vec r - \vec r'|}
         %\nabla \cdot \left(\rho \vec \xi \right)
-    \;\text{d}^3 \vec r
+    \;\text{d}^3 \vec{x}
     =
-    G \int_V
+    -G \nabla \int_V
         \frac{\nabla%_{\vec x}
             \cdot \left(
                 \rho%(\vec x)
                 \vec\xi%(\vec x)
-            \right)}{|\vec\xi|}%\vec r - \vec r'|}
-    \;\text{d}^3 \vec{r}.
-\end{equation}
+            \right)}{|\vec r - \vec x|}%\vec r - \vec r'|}
+    \;\text{d}^3 \vec{x}.
+\end{equation}}
+where the latter substitution makes use of the perturbed equation of continuity (Equation~\ref{eq:perturbed-continuity}). 
 %where $V$ is the equilibrium volume of the star. 
 %Now assuming 
-where I have assumed in the latter substitution that ${\rho(r=R)=0}$, i.e., the zero-boundary condition. %, we may obtain
+%where I have assumed in the latter substitution that ${\rho(r=R)=0}$, i.e., the zero-boundary condition. %, we may obtain
 %\begin{equation}
 %
 %\end{equation}
 Thus, all terms in the right hand side of Equation~(\ref{eq:first-omega}) are functions of $\vec\xi$, and so it is an eigenvalue problem of the form
-\begin{equation} \label{eq:operator}
-    \omega^2_{n,\ell}
-    \vec\xi_{n,\ell}
+\lr{\begin{equation} \label{eq:operator}
+    \mathcal{L}(\vec\xi_i)%{n,\ell})
     =
-    \mathcal{L}(\vec\xi_{n,\ell})
-\end{equation}
-where $\mathcal{L}$ is the linear integro-differential operator satisfying that equation. 
-Now ${\vec\xi~\equiv~\vec\xi_{n,\ell}}$ is the displacement eigenfunction for the mode with label (${n,\ell}$) and ${\omega~\equiv~\omega_{n,\ell}}$ is its corresponding eigenfrequency. 
+    -\omega^2_i%{n,\ell}
+    \vec\xi_i%{n,\ell}
+\end{equation}}
+with $\mathcal{L}$ being the linear integro-differential operator satisfying that equation. 
+Now ${\vec\xi~\equiv~\vec\xi_i}$ is the displacement eigenfunction for the mode with label ${i\equiv(n,\ell)}$ and ${\omega~\equiv~\omega_i}$ is its corresponding eigenfrequency. 
 %Under assumption of that the quantities are nonsingular everywhere and also making use of the zero boundary conditions, i.e., that 
 %\begin{equation}
 %    \rho(r=R)
@@ -806,49 +775,65 @@ Now ${\vec\xi~\equiv~\vec\xi_{n,\ell}}$ is the displacement eigenfunction for th
 %then this eigenvalue problem is Hermitian. 
 \citet{1964ApJ...139..664C} 
 %and \citet{1967MNRAS.136..293L} 
-showed that this eigenvalue problem is Hermitian. 
-This is useful because we then have 
-\begin{equation} \label{eq:var-freqs}
-    \omega^2_{n,\ell}
+showed that when $\rho=P=0$ at the outer boundary, this eigenvalue problem is Hermitian, \lr{i.e.,
+\begin{equation} \label{eq:hermitian}
+    \langle \vec \xi, \mathcal{L}(\vec \eta) \rangle
+    =
+    \langle \mathcal{L}(\vec \xi), \vec \eta \rangle
+\end{equation}
+where ${\langle\cdot\rangle}$ denotes the inner product defined by
+\lr{\begin{equation} \label{eq:inner-prod}
+    \langle
+        \vec\xi_i, %{n,\ell}, 
+        \vec\eta_i %{n,\ell}
+    \rangle
+    =
+    \int_V \rho 
+        \vec\xi_i^\ast %{n,\ell}^\ast 
+        \cdot 
+        \vec \eta_i %_{n,\ell} 
+    \; \text{d}^3\vec r
+    =
+    4\pi
+    \int \rho \left(
+        \xi_r^\ast \eta_r
+        +
+        \Ltwo
+        \xi_h^\ast \eta_h
+    \right)
+    r^2
+    \;\text{d}r. %^3 \vec r.
+\end{equation}}
+Here $^\ast$ is the complex conjugate and $\vec\eta$ is any (suitably regular) vector function of stellar structure.
+This is useful because then squared mode frequencies are real and may be calculated via
+\lr{\begin{equation} \label{eq:var-freqs}
+    -\omega^2_i %{n,\ell}
     =
     \frac{
-        \left\langle
-            \vec\xi_{n,\ell}, 
-            \mathcal{L}(\vec \xi_{n,\ell})
-        \right\rangle
+        \langle
+            \vec\xi_i, %{n,\ell}, 
+            \mathcal{L}(\vec \xi_i) %_{n,\ell})
+        \rangle
     }{
-        \left\langle
-            \vec\xi_{n,\ell},
-            \vec\xi_{n,\ell}
-        \right\rangle
+        \langle
+            \vec\xi_i, %{n,\ell},
+            \vec\xi_i %{n,\ell}
+        \rangle
     }
     %=
     %\int
     %    \xi^{\ast}
     %\;\text{d}m
-\end{equation}
-where ${\langle\cdot\rangle}$ denotes the inner product defined by
-\begin{equation} \label{eq:inner-prod}
-    \left\langle
-        \vec\xi_{n,\ell}, \vec\eta_{n,\ell}
-    \right\rangle
-    =
-    \int_V \left[
-        \xi_r^\ast \eta_r
-        +
-        \Ltwo
-        \xi_h^\ast \eta_h
-    \right]
-    r^2\rho
-    \;\text{d}^3 \vec r.
-\end{equation}
-Here $^\ast$ is the complex conjugate and $\vec\eta$ is any (suitably regular) vector function of stellar structure. \iffalse, and I have introduced the term
-\begin{equation}
-    L 
-    = 
-    \sqrt{\ell(\ell+1)}.
-\end{equation}\fi
-Now $\vec\xi_{n,\ell}$ is an eigenvector of the problem and $\omega^2_{n,\ell}$ is a real eigenvalue. 
+\end{equation}}}
+where $\vec\xi_i$ %{n,\ell}$ 
+is an eigenvector of the problem and $\omega^2_i$ %_{n,\ell}$ 
+is a real eigenvalue. 
+%\lr{A useful property of Hermitian operators is 
+%\begin{equation} \label{eq:hermitian}
+%    \langle \vec \xi, \mathcal{L}(\vec \eta) \rangle
+%    =
+%    \langle \mathcal{L}(\vec \xi), \vec \eta \rangle. 
+%\end{equation}}
 A further property is that the eigenvectors of the problem are orthogonal. 
 Finally, we have the variational principle: perturbations to an eigenvector result in only second-order perturbations to the corresponding eigenvalue. %, %i.e.
 %\begin{equation}
@@ -862,7 +847,7 @@ Frequencies calculated using Equations~(\ref{eq:var-freqs}) are referred to as v
 \subsubsection*{Linearization Around a Reference Model}
 We now seek to linearize the problem around a reference model. 
 We consider a small perturbation to the eigenfrequency, call it ${\delta\omega^2}$, to the eigenfunction, ${\delta\vec\xi}$, and to the operator, ${\delta\mathcal{L}}$:
-\begin{equation} \label{eq:perturbed-operator}
+\lr{\begin{equation} \label{eq:perturbed-operator}
     \Big(
         \mathcal{L} + \delta\mathcal{L}
     \Big)
@@ -872,7 +857,7 @@ We consider a small perturbation to the eigenfrequency, call it ${\delta\omega^2
         \delta\vec\xi
     \Big)
     =
-    \Big(
+    -\Big(
         \omega
         +
         \delta\omega
@@ -881,290 +866,172 @@ We consider a small perturbation to the eigenfrequency, call it ${\delta\omega^2
         \vec\xi
         +
         \delta\vec\xi
-    \Big)
+    \Big).
 \end{equation}
-where the perturbed operator is (\emph{cf.}~Equation~\ref{eq:first-omega})
-\begin{equation}
-    \delta \mathcal{L}(\vec\xi)
-    =
-    \delta \left[
-        \frac{1}{\rho} \left(
-            \Upsilon_1 + \Upsilon_2 + \Upsilon_3 + \Upsilon_4
-        \right)
-    \right].
-\end{equation}
-Here I have introduced the following convenience variables 
-\begin{align}
-    \Upsilon_1 &= \nabla \left( c^2 \rho \nabla \cdot \vec\xi \right)
-    \qquad 
-    & \Upsilon_2 &= \nabla \left( \nabla P \cdot \vec\xi \right) \\
-    \Upsilon_3 &= \nabla \Phi \cdot \nabla \cdot \left( \rho \vec\xi \right)
-    \qquad
-    & \Upsilon_4 &= G\rho \nabla \left( \int_V \frac{\nabla \cdot \left( \rho \vec\xi \right)}{|\vec\xi|} \;\text{d}^3 \vec r  \right)
-\end{align}
-which we may perturb individually in order to find ${\delta\mathcal{L}}$. 
-Perturbing the first component, for example, and keeping only lower-order terms, gives 
-%\begin{description}
-%    \setlength{\itemindent}{0pt}
-%    \item[A.] %Applying the perturbation operator we find
-\begin{align}
-    \delta \left( \frac{\Upsilon_1}{\rho} \right)
-    &=
-    \left\{
-        \delta\left(\frac{1}{\rho}\right) 
-        \left[
-            \nabla \left( c^2 \rho \nabla \cdot \vec\xi \right) 
-        \right]
-    \right\}
-    +
-    \left\{
-        \frac{1}{\rho} \delta
-        \left[ 
-            \nabla \left( c^2 \rho \nabla \cdot \vec\xi \right) 
-        \right]
-    \right\}
-    \\
-    &=
-    \Big\{
-        -\frac{\delta\rho}{\rho} \nabla c^2 \nabla\cdot \vec\xi
-    \Big\}
-    +
-    \Big\{
-        \left(
-            \nabla\rho \delta c^2 \nabla \cdot \vec\xi
-        \right)
-        +
-        \left(
-            \nabla c^2 \delta\rho \nabla \cdot \vec\xi
-        \right)
-    \Big\}
-    \\
-    &=
-    \frac{\nabla\rho}{\rho} \delta c^2 \nabla\cdot \vec\xi.
-\end{align}
-\iffalse
-        \begin{align}
-            \delta \left( \frac{A}{\rho} \right)
-            &=
-            \overbrace{\left[\delta\left(\frac{1}{\rho}\right) A\right]}^{A_1}
-            +
-            \overbrace{\left[\frac{1}{\rho} \delta\left( A \right)\right]}^{A_2}
-            \\
-        %\end{align}
-        %where
-        %\begin{align}
-            A_1
-            &= 
-            -\frac{\delta\rho}{\rho^2} 
-            \nabla\left( 
-                c^2\rho \nabla\cdot \vec\xi
-            \right)
-            \notag\\
-            &= 
-            -\frac{\delta\rho}{\rho} \nabla\left(c^2\right) \nabla\cdot \vec\xi
-            -
-            \cancelto{0}{c^2\rho^{-2} \delta\rho \nabla\rho \nabla\cdot\vec\xi}
-            \\
-        %\end{align}
-        %\begin{align}
-            A_2
-            &=
-            \frac{1}{\rho} 
-            \nabla \left[
-                \delta\left( c^2 \rho \nabla\cdot \vec\xi \right)
-            \right]
-            \notag\\
-            &=
-            \left\{
-            \begin{aligned}
-                &\left[
-                    \cancelto{0}{\rho \nabla \delta c^2 \nabla \cdot \vec\xi}
-                    +
-                    \nabla\rho \delta c^2 \nabla \cdot \vec\xi
-                \right]
-                \\
-                &+
-                \left[
-                    \nabla c^2 \nabla \cdot \vec\xi \delta\rho
-                    +
-                    \cancelto{0}{c^2 \nabla\cdot \vec\xi \nabla \delta \rho}
-                \right]
-            \end{aligned}
-            \right\}
-        %\end{align}
-        %and therefore
-        %\begin{equation} 
-        \\
-        \Rightarrow 
-            \delta \left( \frac{A}{\rho} \right)
-            &=
-            \frac{\nabla\rho}{\rho} \delta c^2 \nabla\cdot \vec\xi.
-        \end{align}
-        %\end{equation}
-\fi
-\iffalse
-        \item[B.] %Here we have
-        \begin{align}
-            \delta\left( \frac{B}{\rho} \right)
-            &=
-            \overbrace{\left[\delta\left(\frac{1}{\rho}\right) B\right]}^{B_1}
-            +
-            \overbrace{\left[\frac{1}{\rho} \delta\left( B \right)\right]}^{B_2}
-            \\
-            B_1
-            &=
-            -\frac{\delta\rho}{\rho^2}
-            \nabla\left( \nabla P \cdot \vec\xi \right)
-            \\
-            B_2
-            &=
-            \frac{1}{\rho}
-            \nabla\left[
-                \delta\left(
-                    \nabla P \cdot \xi
-                \right)
-            \right]
-            \notag\\
-            &=
-            \left[
-                \frac{1}{\rho}
-                \nabla\left( \vec\xi \cdot \delta\nabla P \right)
-            \right]
-            +
-            \left[
-                \frac{1}{\rho}
-                \nabla\left( \nabla P \cdot \delta \xi  \right)
-            \right]
-        \end{align}
-        %which gives
-        \begin{equation} \Rightarrow \boxed{
-            \delta\left( \frac{B}{\rho} \right)
-            = 
-            .
-        }\end{equation}
-    \item[C.]
-        \begin{align}
-            \delta\left( \frac{C}{\rho} \right)
-            &=
-            \overbrace{\left[\delta\left(\frac{1}{\rho}\right) C \right]}^{C_1}
-            +
-            \overbrace{\left[\frac{1}{\rho} \delta\left( C \right)\right]}^{C_2}
-            \\
-            C_1
-            &=
-            \frac{\delta\rho}{\rho^2}
-            \nabla\Phi\cdot\nabla\cdot\left(\rho\vec\xi\right)
-            \\
-            C_2
-            &=
-            -\frac{1}{\rho}
-            \delta\left[
-                \nabla\Phi\cdot\nabla\cdot\left(\rho\vec\xi\right)
-            \right]
-        \end{align}
-    \item[D.]
-        \begin{align}
-            \delta\left( \frac{D}{\rho} \right)
-            &=
-            \overbrace{\left[\delta\left(\frac{1}{\rho}\right) D \right]}^{D_1}
-            +
-            \overbrace{\left[\frac{1}{\rho} \delta\left( D \right)\right]}^{D_2}
-            \\
-            D_1
-            &=
-            -\frac{\delta\rho}{\rho^2}
-            
-            \\
-            D_2
-            &=
-            -\frac{1}{\rho}
-            \delta\left[
-                
-            \right]
-        \end{align}
-%\end{description}
-\fi
-After perturbing all the components, we can find
-\begin{align}
+After perturbing all the components from Equation~(\ref{eq:first-omega}), we can find \citep[e.g.,][]{1994a&as..107..421a}
+\begin{align} \label{eq:deltaL}
+\begin{split}
     \delta\mathcal{L}(\vec\xi)
-    =
+    ={}
     &\frac{\nabla\rho}{\rho} \delta c^2 \nabla\cdot \vec\xi
     +
     \nabla\left(
         \delta c^2 \nabla \cdot \vec\xi
-    \right)
-    +
-    \nabla\left(
+        +
         \delta\vec g
         \cdot
         \vec\xi
     \right)
-    \notag\\
+    +
+    \delta\vec g \,\nabla\cdot\vec\xi
+    \\
     &+
     \nabla\left(
         \frac{\delta\rho}{\rho}
-        c^2\nabla\cdot\vec\xi
     \right)
-    +
-    \delta\vec g \nabla\cdot\vec\xi
+    c^2\nabla\cdot\vec\xi
     -
     G\nabla\int_V
-        \frac{\nabla\cdot \left( \delta\rho\vec\xi \right)}{\vec\xi}
-    \text{d}^3 \vec r'.
-\end{align}
-With this in hand, we may expand Equation~(\ref{eq:perturbed-operator}) to find
-\begin{equation} \label{eq:rel-variational}
-    \frac{\delta\omega_{n,\ell}}{\omega_{n,\ell}}
+        \frac{\nabla\cdot \left( \delta\rho\vec\xi \right)}{|\vec r - \vec x|}
+    \;\text{d}^3 \vec x.
+\end{split}
+\end{align} 
+Expanding Equation~(\ref{eq:perturbed-operator}), we find at the first order
+\begin{equation}
+    %\mathcal{L}(\vec\xi)
+    %+
+    \mathcal{L}(\delta\vec\xi)
+    +
+    %\delta\mathcal{L}(\delta\vec\xi)
+    %+
+    \delta\mathcal{L}(\vec\xi)
     =
-    -\frac{\int_V
-            \rho \vec \xi_{n,\ell}
-            \cdot
-            \delta \mathcal{L}(\vec \xi_{n,\ell})
-        \;\text{d}^3 \vec r}{2\omega^2 I_{n,\ell}}
+    %-\omega^2\vec\xi
+    -\omega^2\delta\vec\xi
+    %-\delta\omega^2\vec\xi
+    -2\omega\delta\omega\vec\xi.
 \end{equation}
-where $I_{n,\ell}$ is the normalized mode inertia from Equation~(\ref{eq:normalized-mode-inertia}). 
-This equation may then be manipulated to obtain, quite generally, the following Fredholm integral equation:
+Taking the product of both sides with $(\rho\vec\xi^\ast)$ %the complex conjugate of the eigenfunction 
+and integrating, we obtain
+%\begin{equation} 
+%\begin{aligned}\label{eq:expansion}
+\begin{align} \label{eq:expansion}
+\begin{split}
+    %\int_V \rho \vec\xi^\ast \cdot \mathcal{L}(\vec\xi) \; \text{d}^3\vec r
+    %+
+    &\int_V \rho \vec\xi^\ast \cdot  \mathcal{L}(\delta\vec\xi) \; \text{d}^3\vec r
+    %+
+    %\int_V \rho \vec\xi^\ast \cdot  \delta\mathcal{L}(\delta\vec\xi) \; \text{d}^3\vec r
+    +
+    \int_V \rho \vec\xi^\ast \cdot  \delta\mathcal{L}(\vec\xi) \; \text{d}^3\vec r
+    %\notag\\
+    %-\omega^2\int_V \rho \vec\xi^\ast \cdot  \vec\xi \; \text{d}^3\vec r
+    \\= -\omega^2&\int_V \rho \vec\xi^\ast \cdot  \delta\vec\xi \; \text{d}^3\vec r
+    %-\delta\omega^2\int_V \rho \vec\xi^\ast \cdot  \vec\xi \; \text{d}^3\vec r
+    -2\omega\delta\omega\int_V \rho \vec\xi^\ast \cdot  \vec\xi \; \text{d}^3\vec r.
+\end{split}
+\end{align}
+%\end{aligned}
+%\end{equation}
+Since $\mathcal{L}$ is Hermitian, the first term on both sides cancel to give
+%Now we apply Equation~(\ref{eq:operator}) to the left hand side, and making use of Equation~(\ref{eq:hermitian}), the first term on both sides of Equation~(\ref{eq:expansion}) cancel to give
+\begin{equation} \label{eq:rel-variational}
+    \delta\omega
+    =
+    %-\frac{1}{2\omega}
+    %\frac{\int_V \rho \vec\xi^\ast \cdot \delta \mathcal{L}(\vec \xi)\;\text{d}^3\vec r}{\int_V %\rho \vec\xi^\ast \cdot \vec\xi \;\text{d}^3 \vec r}
+    %=
+    -\frac{1}{2\omega}\frac{\langle \vec\xi, \delta \mathcal{L}(\vec\xi) \rangle}{\langle \vec\xi, \vec\xi \rangle}.
+\end{equation}
+%where $I$ is the normalized mode inertia from Equation~(\ref{eq:normalized-mode-inertia}).} 
+%with one such equation for each eigenmode. 
+%To continue from here, we need to know $\delta\mathcal{L}$. 
+%This equation may then be manipulated to obtain, quite generally, the following Fredholm integral equation:
+Now plugging $\delta\mathcal{L}$ from Equation~(\ref{eq:deltaL}) into Equation~(\ref{eq:rel-variational}) and assuming that $\delta P=0$ at the outer boundary \citep[e.g.,][]{1967MNRAS.136..293L}, one may use integration by parts to obtain, quite generally, a Fredholm integral relation for each mode of oscillation $i$:
+%\lr{After considerable manipulation, including integration by parts and the assumption of free boundary conditions, one may obtain the following Fredholm integral equation:}
 \begin{equation} \label{eq:forward} \boxed{
-  \frac{\delta\nu_i}{\nu_i} 
+  \frac{\delta\omega_i}{\omega_i} 
   = 
-  \int K_i^{(f_1, f_2)} \cdot \frac{\delta f_1}{f_1}
-                + K_i^{(f_2, f_1)} \cdot \frac{\delta f_2}{f_2}
+  \int K_i^{(f_1, f_2)} \frac{\delta f_1}{f_1}
+                + K_i^{(f_2, f_1)} \frac{\delta f_2}{f_2}
        \;\text{d}r
-} \end{equation}
-where $f_1$ and $f_2$ are two variables of stellar structure (e.g. sound speed and density), and
+}\,. \end{equation}}
+Here $f_1$ and $f_2$ are two variables of stellar structure (e.g., sound speed and density), and
 ${\delta f_1}$ and ${\delta f_2}$ are the differences with respect to another model. %between those quantities and those of another model. 
-Relative differences in the frequencies ${\delta\nu_i/\nu_i}$ of mode ${i~\equiv~(n,\ell)}$ between two models relate to relative differences in physical quantities of those models via a pair of \emph{kernel functions} $\mathbf K_i$. 
+Relative differences in the frequencies ${\delta\omega_i/\omega_i}$ of mode ${i~\equiv~(n,\ell)}$ between two models relate to relative differences in physical quantities of those models via a pair of \emph{kernel functions} $\vec{K}_i$. 
 
-The kernels for a given pair of stellar structure variables can be calculated by transforming Equation~(\ref{eq:rel-variational}) into an equation in the form of Equation~(\ref{eq:forward}). 
+%The kernels for any given pair of stellar structure variables can be calculated by transforming Equation~(\ref{eq:rel-variational}) into an equation in the form of Equation~(\ref{eq:forward}). 
 %Prior to stating the kernel functions, it is valuable to make some remarks about this equation. 
 Equation~(\ref{eq:forward}) is the central equation of this thesis, as this is the equation that we will use to infer the internal structures of stars. 
-In particular, we will determine the stellar structure profile $f_1$ of a star (for some choice of $\mathbf{f}$, discussed later) by deducing the relative difference with a best-fitting evolutionary model ${\delta f_1/f_1}$ via inversion of this equation. 
+In particular, we will determine the stellar structure profile $f_1$ of a star (for some choice of $\vec{f}$, discussed later) by deducing the relative difference with a best-fitting evolutionary model ${\delta f_1/f_1}$ via inversion of this equation. 
 This is the structure inversion problem, which we will revisit in Section~\ref{sec:inverse} and Chapter~\ref{chap:inversion}. 
 For now, we will continue by inspecting the kernel functions in detail. 
 %It is valuable at this point to inspect some profiles of $\delta f/f$ for different choices of $f$. 
 %
 
 
-
+%\newpage
 \subsection{Stellar Structure Kernels}
 \label{sec:kernels}
 %For a given pair of physical variables, the kernels for that pair may be derived from the perturbed equations of stellar structure. %The calculation of kernels is possible because stars obey a variational principle that says their eigenfrequencies do not depend to first-order on the perturbed eigenfunctions. 
 We have seen in Equation~(\ref{eq:forward}) that perturbations to the stellar structure translate into perturbations in oscillation mode frequencies, and kernel functions quantify that response. 
+The kernels for any given pair of stellar structure variables can be calculated by transforming Equation~(\ref{eq:rel-variational}) into an equation in the form of Equation~(\ref{eq:forward}). 
 Because the variables of stellar structure are not independent, kernels must be given with respect to (at least) two variables simultaneously. 
-Here I will give the the kernels for the following pairs: ${(c,\rho)}, {(c^2,\rho)}, {(\Gamma_1,\rho)},$ and ${(u,Y)}$. 
+%The kernels for any given pair of stellar structure variables can be calculated by transforming Equation~(\ref{eq:rel-variational}) into an equation in the form of Equation~(\ref{eq:forward}). 
+Here I will give the kernels for the following pairs: ${(c,\rho)}$, ${(c^2,\rho)}$, ${(\Gamma_1,\rho)}$, and ${(u,Y)}$. 
 
 \subsubsection*{Kernel Pair \texorpdfstring{$\mathbf{(c, \rho)}$}{(c,rho)}}
 \noindent
 The kernels for the sound speed and density, i.e.\ ${(f_1, f_2) = (c, \rho)}$ of Equation~(\ref{eq:forward}), can be found as \citep[\emph{cf.}][]{GoughThompson1991}
-\begin{align}
-    \omega^2 \mathcal{S} \Kcr =& r^2 \rho c^2 \chi^2 
-\\  \omega^2 \mathcal{S} \Krc =& -\half \left( \xi_r^2 + \Ltwo \xi_h^2 \right) r^2 \rho \omega^2 
-\\& + \frac{1}{2} \rho c^2 \chi^2 r^2 - G m \rho \left( \chi + \half \xi_r \ddra{\ln \rho} \right) \xi_r
-\notag\\& - 4\pi G \rho r^2 \int_{s=r}^R \left( \chi + \half \xi_r \ddlsa{\ln \rho} \right) \xi_r \rho \; \text{d}s
-\notag\\& + G m \rho \; \xi_r \ddra{\xi_r} + \half G \left(m \ddra{\rho} + 4\pi r^2 \rho^2 \right) \xi_r^2
-\notag\\& - \frac{4 \pi G}{\Ltwo} \rho (\ell+1) r^{-\ell} (\xi_r - \ell \xi_h) \int_{s=0}^r \left(\rho \chi + \xi_r \ddsa{\rho} \right) s^{\ell+2} \; \text{d}s 
-\notag\\&- \frac{4 \pi G}{\Ltwo} \rho \ell r^{(\ell+1)} \left( \xi_r + (\ell+1) \xi_h \right) \int_{s=r}^R \left( \rho \chi + \eta_r \ddsa{\rho} \right) s^{-(\ell-1)} \; \text{d}s\notag
-\end{align}
+\lr{\begin{align}
+    \omega^2 \mathcal{S} \Kcr ={} & r^2 \rho c^2 \chi^2 
+\\  \omega^2 \mathcal{S} \Krc ={} & 
+    - \half \left( 
+        \xi_r^2 + L^2 \xi_h^2 
+    \right) 
+    r^2 \rho \omega^2 
+    \\& + \frac{1}{2} \rho c^2 \chi^2 r^2 
+    - G m \rho \left( 
+        \chi 
+        + 
+        \half \xi_r \ddra{\ln \rho} 
+    \right) \xi_r
+    \notag\\& - 4\pi G \rho r^2 \int_{r}^R \left( 
+        \chi 
+        + 
+        \half \xi_r \frac{\text{d} \ln \rho}{\text{d} s} %\ddlsa{\ln \rho} 
+    \right) \xi_r \rho \; \text{d}s
+    \notag\\& + G m \rho \; \xi_r \ddra{\xi_r} 
+    + \half G \left(
+        m \ddra{\rho} 
+        + 
+        4\pi r^2 \rho^2 
+    \right) \xi_r^2
+    \notag\\& - \frac{4 \pi G}{2\ell + 1} \rho \Bigg[ 
+        (\ell+1) r^{-\ell} \left(
+            \xi_r 
+            - 
+            \ell \xi_h
+        \right) \int_{0}^r \left(
+            \rho \chi 
+            + 
+            \xi_r \ddsa{\rho} 
+        \right) s^{\ell+2} \; \text{d}s 
+        \notag\\&\hphantom{- \frac{4 \pi G}{2\ell + 1} \rho \Bigg[}
+        - \ell r^{\ell+1} \left( 
+            \xi_r 
+            + 
+            \left( 
+                \ell+1
+            \right) \xi_h 
+        \right) \int_r^R \left( 
+            \rho \chi 
+            + 
+            \xi_r \ddsa{\rho} 
+        \right) s^{-(\ell-1)} \; \text{d}s 
+    \Bigg] \notag
+    %\notag\\&- \frac{4 \pi G}{L^2} \rho \ell r^{(\ell+1)} \left( \xi_r + (\ell+1) \xi_h \right) \int_{r}^R \left( \rho \chi + \eta_r \ddsa{\rho} \right) s^{-(\ell-1)} \; \text{d}s \Bigg]\notag
+\end{align}}
 where %$\omega=2\pi\nu$ is the cyclic mode frequency, $\xi_r$ and $\xi_h$ are the radial and horizontal components of the mode eigenfunction, $m$ is the fractional mass, $G$ is the gravitational constant, 
 I have introduced the dilatation
 \begin{equation}
@@ -1172,8 +1039,9 @@ I have introduced the dilatation
 \end{equation}
 and $\mathcal{S}$ is a quantity proportional to the energy of the mode
 \begin{equation}
-    \mathcal{S} = \int \left( \xi_r^2 + \Ltwo \xi_h^2 \right) r^2 \rho \; \text{d}r. 
+    \mathcal{S} = \int \rho \left( \xi_r^2 + \Ltwo \xi_h^2 \right) r^2 \; \text{d}r. 
 \end{equation}
+
 
 
 \subsubsection*{Kernel Pair \texorpdfstring{$\mathbf{(c^2, \rho)}$}{(c2,rho)}}
@@ -1198,13 +1066,20 @@ It is instructive at this point to inspect some kernels and see what they actual
 These kernels tell us how perturbations to the relevant physical variables would translate into perturbations of the respective oscillation mode frequencies. 
 The figure additionally shows more kernel pairs, some of which will be also derived in this section. 
 
-\afterpage{
-    \cleardoublepage
+
+%\afterpage{
+    %\cleardoublepage
     %\clearpage% flush all other floats
     %\ifodd\value{page}
     %\else% uncomment this else to get odd/even instead of even/odd
     %    \expandafter\afterpage% put it on the next page if this one is odd
     %\fi
+    %\clearpage
+    %\ifeven\value{page}
+    %\else% uncomment this else to get odd/even instead of even/odd
+        %\expandafter\afterpage% put it on the next page if this one is odd
+    %\fi
+%    {%
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth,trim={0 1.1cm 0 0}, clip]{figs/pulse/kernels/kernel-ell-Gamma1_c2-diffusion.pdf}%
@@ -1220,7 +1095,7 @@ The figure additionally shows more kernel pairs, some of which will be also deri
     \includegraphics[width=0.5\textwidth]{figs/pulse/kernels/kernel-ell-u_Y-diffusion.pdf}%
     \includegraphics[width=0.5\textwidth]{figs/pulse/kernels/kernel-ell-Y_u-diffusion.pdf}
     \caption[Kernel functions (same $n$, different $\ell$)]{Pairs of kernel functions for modes with the same radial order ${n=5}$ and different spherical degrees ${\ell=1},2,3$. \label{fig:same-n}}
-\end{figure}
+\end{figure}%
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth,trim={0 1.1cm 0 0}, clip]{figs/pulse/kernels/kernel-n-Gamma1_c2-diffusion.pdf}%
@@ -1236,16 +1111,17 @@ The figure additionally shows more kernel pairs, some of which will be also deri
     \includegraphics[width=0.5\textwidth]{figs/pulse/kernels/kernel-n-u_Y-diffusion.pdf}%
     \includegraphics[width=0.5\textwidth]{figs/pulse/kernels/kernel-n-Y_u-diffusion.pdf}
     \caption[Kernel functions (same $\ell$, different $n$)]{Pairs of kernel functions for modes with the same spherical degree ${\ell=2}$ and different radial order ${n=4},5,6$. \label{fig:same-ell}}
-\end{figure}
-}
+\end{figure}%
+%    }%
+%}
 
 \subsubsection*{Kernel Pair \texorpdfstring{$\mathbf{(\Gamma_1, \rho)}$}{(Gamma1,rho)}}
 \noindent
 Kernel functions for the first adiabatic exponent and density may be transformed from ${(c^2, \rho)}$ kernels via \citep[e.g.][Equations~104-105]{InversionKit}:
 \begin{align}
-    \KGr =& \Kcsr
-\\  \KrG =& \Krcs - \Kcsr + \frac{G m \rho}{r^2} \int_{s=0}^r \frac{\Gamma_1 \chi^2 s^2}{2 \mathcal{S} \omega^2} \; \text{d}s
-\\\notag   &+ \rho r^2 \int_{s=r}^R \frac{4\pi G \rho}{s^2} \left( \int_{t=0}^s \frac{\Gamma_1 \chi^2 t^2}{2 \mathcal{S} \omega^2} \; \text{d}t \right) \text{d}s.
+    \KGr ={} & \Kcsr
+\\  \KrG ={} & \Krcs - \Kcsr + \frac{G m \rho}{r^2} \int_{s=0}^r \frac{\Gamma_1 \chi^2 s^2}{2 \mathcal{S} \omega^2} \; \text{d}s
+\\\notag   &+ \rho r^2 \int_{s=r}^R \frac{4\pi G \rho}{s^2} \left( \int_{t=0}^s \frac{\Gamma_1 \chi^2 t^2}{2 \mathcal{S} \omega^2} \; \text{d}t \right) \; \text{d}s.
 \end{align}
 
 \iffalse
@@ -1261,11 +1137,11 @@ Kernel functions for the first adiabatic exponent and density may be transformed
 Using additional assumptions, for example under assumption of the EOS, we may formulate kernels for other quantities such as the fractional helium abundance. 
 For each mode $i$ we wish to obtain the pair of kernel functions for the isothermal sound speed (recall Equation~\ref{eq:speed-of-sound}) and helium abundance $Y$
 \begin{equation}
-    \mathbf K^{(2)}_i = \left[ \KuYnop, \KYunop \right]
+    \vec K^{(2)}_i = \left[ \KuYnop, \KYunop \right]
 \end{equation}
 via conversion from the kernel pair of ${(\Gamma_1, \rho)}$
 \begin{equation}
-    \mathbf K^{(1)}_i = \left[ \KrG, \KGr \right].
+    \vec K^{(1)}_i = \left[ \KrG, \KGr \right].
 \end{equation}
 %In order to calculate the difference in helium abundance, we will need to assume an equation of state. 
 We can expand the perturbation to the first adiabatic exponent as
@@ -1407,17 +1283,17 @@ D &= \left(
 %We have the kernels expressed in vector form %(ibid.\ Equation~34)
 The kernels can be expressed in matrix form
 \begin{equation} \label{eq:vec-k}
-    \mathbf K^{(2)}_i = D^T \mathbf K^{(1)} - B^T \mathbf w
+    \vec K^{(2)}_i = D^T \vec K^{(1)} - B^T \vec w
 \end{equation}
-with $\mathbf w$ being the solution of the differential equation %(ibid.\ Equation~33)
+with $\vec w$ being the solution of the differential equation %(ibid.\ Equation~33)
 \begin{equation} \label{eq:vec-w}
-    \ddx \left[ \mathbf w \right] = -A^T \mathbf w - C^T \mathbf K^{(1)}
+    \ddx \left[ \vec w \right] = -A^T \vec w - C^T \vec K^{(1)}
 \end{equation}
 having boundary conditions %(ibid.\ Equation~28)
 \begin{equation} \label{eq:bvs2}
     \frac{\delta \rho}{\rho} w_1 + \frac{\delta m}{m} w_2 = 0 \text{ at } r=0 \text{ and } r=R.
 \end{equation}
-By substitution of these matrices, we have that $\mathbf w$ is the solution to 
+By substitution of these matrices, we have that $\vec w$ is the solution to 
 \begin{align}
     \ddxa{w_1} &= -\U w_2 - \KrG - \left( \Gr + \GP \right) \KGr \\
     \ddxa{w_2} &= \VV w_1 + \U w_2.
@@ -1435,7 +1311,7 @@ with the boundary conditions of Equation~(\ref{eq:bvs2}), which without loss of 
 \begin{equation} \label{eq:bvs}
     w_1(r = 0) = w_2(r=R) = 0.
 \end{equation}
-Finally we may calculate the kernels using this $\mathbf w$ by substituting the matrices above into Equation~(\ref{eq:vec-k}) to get
+Finally we may calculate the kernels using this $\vec w$ by substituting the matrices above into Equation~(\ref{eq:vec-k}) to get
 \begin{align}
     \KuYnop &= -\KrG - \Gr \cdot \KGr + \VV w_1 - \U w_2 \\
     \KYunop &= \GY \cdot \KGr.
@@ -1446,7 +1322,7 @@ These last kernels---the ${(u,Y)}$ kernel pair---are especially valuable for the
 An inspection of their form (Figures~\ref{fig:same-n}~and~\ref{fig:same-ell}) reveals that the $Y$ kernels only have amplitude in ionization zones, which are located near to the stellar surface. 
 As we will see later, this implies that it will be possible to isolate the effects of differences in mode frequencies to differences in internal isothermal sound speeds. 
 
-\newpage
+%\newpage
 \subsubsection*{Testing the Forward Formulation}
 
 We may now compare the actual frequency differences between the two solar models to the differences that we get through the kernel equation (Equation~\ref{eq:forward}). 
@@ -1462,7 +1338,7 @@ We therefore modify Equation~(\ref{eq:forward}) to take this phenomenon into acc
   = 
   \int_0^R \left[ K_i^{(f_1, f_2)} \frac{\delta f_1}{f_1}
                 + K_i^{(f_2, f_1)} \frac{\delta f_2}{f_2}
-          \right] \text{d}r
+          \right] \; \text{d}r
     + \frac{F(\nu_i)}{I_i}
 }\end{equation}
 where ${F(\nu_i)}$ is adapted from the surface term of Equation~(\ref{eq:BallGizon-surfterm})
